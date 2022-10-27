@@ -1,0 +1,20 @@
+{
+  "headers": [
+    {
+      "text": "Dessert (100g serving)",
+      "align": "start",
+      "sortable": "false",
+      "value": "name"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Frozen Yogurt",
+      "calories": "159",
+      "fat": "6.0",
+      "carbs": "24",
+      "protein": "4.0",
+      "iron": "1%"
+    }
+  ]
+}
