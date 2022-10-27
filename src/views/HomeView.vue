@@ -1,15 +1,10 @@
 <template>
-  <app-bar />
+  <p>Home View</p>
 </template>
 
 <script>
-  import AppBar from '../components/AppBar'
 
   export default {
     name: 'HomeView',
-
-    components: {
-      AppBar,
-    },
   }
 </script>
