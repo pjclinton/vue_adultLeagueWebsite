@@ -8,7 +8,7 @@ export default new Vuex.Store({
     roster: []
   },
   getters: {
-    
+
   },
   mutations: {
     ADD_PLAYER(state, payload) {
