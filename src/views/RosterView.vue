@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { collection, getDocs } from "firebase/firestore";
 import PlayerTable from '@/components/PlayerTable.vue';
 import { db } from '../plugins/firebase';
   export default {

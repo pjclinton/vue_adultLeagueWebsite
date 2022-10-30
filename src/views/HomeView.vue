@@ -3,7 +3,7 @@
     <div class="text">
       <div class="team-name">Electric Lettuce</div>
       <p>Our hockey team is cooler than yours!</p>
-      <v-btn to="/roster">Check out our Roster</v-btn>
+      <v-btn to="/RosterView">Check out our Roster</v-btn>
     </div>
     <div>
       <v-img class="image"
