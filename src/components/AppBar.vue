@@ -15,7 +15,7 @@
 
         <div class="btn-group">
         <v-btn
-          to="/roster"
+          to="/RosterView"
           text
         >
           Roster
