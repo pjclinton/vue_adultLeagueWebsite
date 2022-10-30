@@ -27,24 +27,24 @@ import { db } from '../plugins/firebase';
       PlayerTable,
     },
     data() {
-      return {
-       headers: [
-            {
-        text: 'Full Name',
-        align: 'start',
-        sortable: false,
-        value: 'fullname',
-      },
-      { text: 'Email', value: 'email' },
-      { text: 'Phone', value: 'phone' },
-      { text: 'Position', value: 'position' },
-      { text: 'Notes', value: 'notes' },
-      { text: 'Jersey', value: 'jerseys' },
-      { text: 'Dues', value: 'dues' },
-      { text: 'Number', value: 'number' },
-     ],
-     test: ''
-    }
+        return {
+          headers: [
+              {
+            text: 'Full Name',
+            align: 'start',
+            sortable: false,
+            value: 'fullname',
+          },
+          { text: 'Email', value: 'email' },
+          { text: 'Phone', value: 'phone' },
+          { text: 'Position', value: 'position' },
+          { text: 'Notes', value: 'notes' },
+          { text: 'Jersey', value: 'jerseys' },
+          { text: 'Dues', value: 'dues' },
+          { text: 'Number', value: 'number' },
+        ],
+        test: ''
+      }
    },
    computed: {
       rosterData () {
