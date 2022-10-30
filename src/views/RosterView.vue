@@ -12,11 +12,15 @@
         :data="rosterData"
       />
     </div>
+    <div class="testing">
+      {{ test }}
+    </div>
   </div>
 </template>
 
 <script>
 import PlayerTable from '@/components/PlayerTable.vue';
+import { db } from '../plugins/firebase';
   export default {
 
     components: {
@@ -26,22 +30,23 @@ import PlayerTable from '@/components/PlayerTable.vue';
       return {
        headers: [
             {
-          text: 'Full Name',
-          align: 'start',
-          sortable: false,
-          value: 'fullname',
-        },
-        { text: 'Email', value: 'email' },
-        { text: 'Phone', value: 'phone' },
-        { text: 'Position', value: 'position' },
-        { text: 'Notes', value: 'notes' },
-        { text: 'Jerssey', value: 'jerseys' },
-        { text: 'Dues', value: 'dues' },
-        { text: 'Number', value: 'number' },
-       ],
-      }
-    },
-    computed: {
+        text: 'Full Name',
+        align: 'start',
+        sortable: false,
+        value: 'fullname',
+      },
+      { text: 'Email', value: 'email' },
+      { text: 'Phone', value: 'phone' },
+      { text: 'Position', value: 'position' },
+      { text: 'Notes', value: 'notes' },
+      { text: 'Jersey', value: 'jerseys' },
+      { text: 'Dues', value: 'dues' },
+      { text: 'Number', value: 'number' },
+     ],
+     test: ''
+    }
+   },
+   computed: {
       rosterData () {
         return this.$store.state.roster.map(player => {
           return {
@@ -51,6 +56,12 @@ import PlayerTable from '@/components/PlayerTable.vue';
         })
       }
     },
+    async created() {
+      const querySnapshot = await getDocs(collection(db, "rosters"));
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data())
+      })
+  }
   }
 </script>
 
@@ -61,7 +72,6 @@ import PlayerTable from '@/components/PlayerTable.vue';
   justify-content: space-between;
   align-items: center;
   padding: 4rem;
-  background: #eee;
 
   .title {
     font-size: 22px;
