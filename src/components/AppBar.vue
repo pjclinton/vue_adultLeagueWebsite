@@ -12,13 +12,22 @@
 
         <v-spacer></v-spacer>
 
+
+        <div class="btn-group">
         <v-btn
           to="/roster"
           text
         >
           Roster
         </v-btn>
-
+        <v-btn
+          to="/"
+          text
+          color="secondary"
+        >
+        Home
+      </v-btn>
+    </div>
       </v-app-bar>
   </div>
 </template>

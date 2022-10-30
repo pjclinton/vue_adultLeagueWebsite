@@ -5,7 +5,7 @@
       <v-card-subtitle>
         Use this form to add a player. duh. did I really have to say it?
       </v-card-subtitle>
-      <v-card-content>
+      <v-card-text>
         <v-form ref="form" v-model="valid">
           <v-container>
             <v-row>
@@ -113,7 +113,7 @@
             </v-row>
           </v-container>
         </v-form>
-      </v-card-content>
+      </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
@@ -168,6 +168,7 @@
         }
 
         this.$store.dispatch('addPlayer', formData);
+        this.$router.push('/roster')
       }
     },
   }
