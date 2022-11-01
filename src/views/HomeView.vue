@@ -1,9 +1,34 @@
 <template>
   <div class="container">
     <div class="text">
-      <div class="team-name">Electric Lettuce</div>
-      <p>Our hockey team is cooler than yours!</p>
-      <v-btn to="/RosterView">Check out our Roster</v-btn>
+      <div class="team-name">Beer League Heroes</div>
+      <p>Stat collections for Austin Area Ice Hockey Leagues!</p>
+      
+
+      <v-menu
+      transition="slide-y-transition"
+      bottom
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          class="purple"
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+        Select a rink!
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
     </div>
     <div>
       <v-img class="image"
@@ -16,13 +41,22 @@
 
 <script>
 
-  export default {
+export default {
     name: 'HomeView',
+    data: () => ({
+      items: [
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me 2' },
+      ],
+    }),
   }
+
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Kolker+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight&family=VT323&display=swap');
 .container {
   display: flex;
   flex-direction: row;
@@ -36,8 +70,8 @@
 
   }
   .team-name {
-      font-family: 'Kolker Brush', cursive;
-      font-size: 5rem;
+    font-family: 'VT323', monospace;
+    font-size: 5rem;
   }
 }
 
