@@ -25,6 +25,9 @@ export default {
   }),
   created() {
     this.$store.dispatch('getLocalStorage')
+    this.$store.dispatch('getTeams')
+    this.$store.dispatch('getRoster', '61428')
+    
   }
 };
 </script>
