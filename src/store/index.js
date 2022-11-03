@@ -5,7 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    roster: []
+    roster: [],
+    teams: [],
+    isLoading: false,
   },
   getters: {
 
@@ -19,6 +21,25 @@ export default new Vuex.Store({
       if (localStorage.getItem('roster') !== null) {
         state.roster = JSON.parse(localStorage.getItem('roster'))
       }
+    },
+    GET_ROSTER(state, teamId) {
+      state.isLoading = true;
+      const url = `https://app.mysportsort.com/view/json/js_getteamroster.php?&teamid=${teamId}&an=440&slid=32320&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667507787564`
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          state.roster = data.roster.players;
+          console.log(state.roster)
+        }).finally(()=> state.isLoading = false)
+    },
+    GET_TEAMS(state) {
+      const url = `https://app.mysportsort.com/view/json/js_getstandings.php?&an=440&sort=0&tid=0&slid=32320&seasontype=1&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667340510330`
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          state.teams = data.seasonstandings.teams;
+          console.log(state.teams)
+        })
     }
   },
   actions: {
@@ -27,6 +48,12 @@ export default new Vuex.Store({
     },
     getLocalStorage({commit}) {
       commit('GET_LOCAL_STORAGE')
+    },
+    getRoster({commit}, teamId) {
+      commit('GET_ROSTER', teamId)
+    },
+    getTeams({commit}) {
+      commit('GET_TEAMS')
     }
   },
   modules: {

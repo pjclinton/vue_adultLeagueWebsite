@@ -23,8 +23,9 @@ export default {
   data: () => ({
     //
   }),
-  created() {
+  async created() {
     this.$store.dispatch('getLocalStorage')
+    this.$store.dispatch('getTeams')
   }
 };
 </script>

@@ -27,6 +27,13 @@
         >
         Home
       </v-btn>
+      <v-btn
+          to="/b-league"
+          text
+          color="secondary"
+        >
+        B-League
+      </v-btn>
     </div>
       </v-app-bar>
   </div>

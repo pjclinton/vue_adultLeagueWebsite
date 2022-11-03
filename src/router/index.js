@@ -27,6 +27,11 @@ const routes = [
     name: 'add-player',
 
     component: () => import('../views/AddPlayerView.vue')
+  },
+  { 
+    path: '/b-league',
+    name: 'b-league',
+    component: () => import('../views/BLeague.vue')
   }
 ]
 
