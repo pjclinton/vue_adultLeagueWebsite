@@ -26,11 +26,6 @@ export default {
   async created() {
     this.$store.dispatch('getLocalStorage')
     this.$store.dispatch('getTeams')
-<<<<<<< HEAD
-=======
-    this.$store.dispatch('getRoster', '61428')
-    
->>>>>>> 6e72c380244f846726ce8a81750730ad9fb66f12
   }
 };
 </script>
