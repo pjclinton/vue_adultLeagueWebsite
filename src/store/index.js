@@ -3,6 +3,20 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+export class player {
+  playerid = "1029534";
+  name = "Todd Hummel";
+  height = "";
+  weight= "";
+  city= "";
+  state= "";
+  dob= "09/13/1987";
+  age= 35;
+  number= "13";
+  facebook= "0";
+  position= "Defense";
+}
+
 export default new Vuex.Store({
   state: {
     roster: [],
@@ -23,6 +37,7 @@ export default new Vuex.Store({
       }
     },
     GET_ROSTER(state, teamId) {
+<<<<<<< HEAD
       state.isLoading = true;
       const url = `https://app.mysportsort.com/view/json/js_getteamroster.php?&teamid=${teamId}&an=440&slid=32320&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667507787564`
       fetch(url)
@@ -39,6 +54,29 @@ export default new Vuex.Store({
         .then((data) => {
           state.teams = data.seasonstandings.teams;
           console.log(state.teams)
+=======
+      const uid = process.env.HOCKEY_APP_UID;
+      const key = process.env.HOCKEY_APP_KEY;
+      const token = process.env.HOCKEY_APP_TOKEN;
+      const url = `https://app.mysportsort.com/view/json/js_getteamroster.php?&teamid=${teamId}&uid=${uid}&key=${key}&securetoken=${token}`
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          state.roster = data.players;
+          console.log({data})
+        })
+    },
+    GET_TEAMS(state) {
+      const uid = process.env.HOCKEY_APP_UID;
+      const key = process.env.HOCKEY_APP_KEY;
+      const token = process.env.HOCKEY_APP_TOKEN;
+      const url = `https://app.mysportsort.com/view/json/js_getstandings.php?&an=440&sort=0&tid=0&slid=32320&seasontype=1&uid=${uid}&key=${key}&securetoken=${token}`
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          state.teams = data.teams;
+          console.log({data})
+>>>>>>> 6e72c380244f846726ce8a81750730ad9fb66f12
         })
     }
   },
@@ -49,8 +87,13 @@ export default new Vuex.Store({
     getLocalStorage({commit}) {
       commit('GET_LOCAL_STORAGE')
     },
+<<<<<<< HEAD
     getRoster({commit}, teamId) {
       commit('GET_ROSTER', teamId)
+=======
+    getRoster({commit}, payload) {
+      commit('GET_ROSTER', payload)
+>>>>>>> 6e72c380244f846726ce8a81750730ad9fb66f12
     },
     getTeams({commit}) {
       commit('GET_TEAMS')
