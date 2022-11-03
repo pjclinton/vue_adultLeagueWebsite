@@ -1,68 +1,33 @@
 <template>
   <div>
-    <div class="header">
-      <div class="title">
-        Active Roster
-      </div>
-      <v-btn to="/add-player" outlined>Add Player</v-btn>
+    <div v-if="!$store.state.isLoading">
+      <ul v-for="person in $store.state.roster" :key="person.playerid">
+        <li>
+          {{person.name}}
+        </li>
+      </ul>
     </div>
-    <div class="table">
-      <player-table
-        :headers="headers"
-        :data="rosterData"
-      />
-    </div>
-    <div class="testing">
-      {{ test }}
+    <div class="loader text-center" v-if="$store.state.isLoading">
+      <v-progress-circular
+      indeterminate
+      color="primary"
+    ></v-progress-circular>
     </div>
   </div>
 </template>
 
 <script>
-import { collection, getDocs } from "firebase/firestore";
-import PlayerTable from '@/components/PlayerTable.vue';
-import { db } from '../plugins/firebase';
   export default {
 
     components: {
-      PlayerTable,
+
     },
     data() {
         return {
-          headers: [
-              {
-            text: 'Full Name',
-            align: 'start',
-            sortable: false,
-            value: 'fullname',
-          },
-          { text: 'Email', value: 'email' },
-          { text: 'Phone', value: 'phone' },
-          { text: 'Position', value: 'position' },
-          { text: 'Notes', value: 'notes' },
-          { text: 'Jersey', value: 'jerseys' },
-          { text: 'Dues', value: 'dues' },
-          { text: 'Number', value: 'number' },
-        ],
-        test: ''
+          
       }
    },
-   computed: {
-      rosterData () {
-        return this.$store.state.roster.map(player => {
-          return {
-            ...player,
-            fullname: `${player.firstname} ${player.lastname}`
-          }
-        })
-      }
-    },
-    async created() {
-      const querySnapshot = await getDocs(collection(db, "rosters"));
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data())
-      })
-  }
+
   }
 </script>
 
