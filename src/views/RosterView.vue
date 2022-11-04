@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="$store.state.roster">
-  <v-card>
+  <v-card dark>
     <v-card-title>
       {{ $store.state.selectedTeam?.teamname }}
     </v-card-title>
@@ -25,7 +25,7 @@
     </v-data-table>
     </v-card-text>
     <v-card-actions>
-      <v-btn to="/b-league" color="warning">
+      <v-btn to="/standings" color="warning">
         Back
       </v-btn>
     </v-card-actions>

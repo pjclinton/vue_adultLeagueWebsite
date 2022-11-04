@@ -29,9 +29,9 @@ const routes = [
     component: () => import('../views/AddPlayerView.vue')
   },
   { 
-    path: '/b-league',
-    name: 'b-league',
-    component: () => import('../views/BLeague.vue')
+    path: '/standings',
+    name: 'standings',
+    component: () => import('../views/StandingsView.vue')
   }
 ]
 
