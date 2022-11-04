@@ -37,7 +37,7 @@
         { text: 'Points', value: 'points', width: '100px' },
         { text: 'Wins', value: 'totalwins', width: '100px' },
         { text: 'Losses', value: 'losses', width: '100px' },
-        { text: 'OT Losses', value: 'otl', width: '100px' },
+        { text: 'OT Losses', value: 'otl', width: '115px' },
         { text: 'Ties', value: 'ties', width: '100px'},
         { text: 'Last Five', value: 'lastfive', width: '100px'},
         { text: '', value: 'teamid', width: '100px'},
