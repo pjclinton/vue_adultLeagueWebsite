@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <v-card>
+    <v-card dark>
       <v-card-title>Add Player Form</v-card-title>
       <v-card-subtitle>
         Use this form to add a player. duh. did I really have to say it?

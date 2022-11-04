@@ -2,7 +2,7 @@
   <div class="container">
     <div class="text">
       <div class="team-name">Beer League Heroes</div>
-      <p>Stat collections for Austin Area Ice Hockey Leagues!</p>
+      <p class="pt-6">Stat collections for Austin Area Ice Hockey Leagues!</p>
       
 
       <v-menu
@@ -12,12 +12,12 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn
           class="purple"
-          color="primary"
+          color="#ad5389"
           dark
           v-bind="attrs"
           v-on="on"
         >
-        Select a rink!
+        Select a rink! 
         </v-btn>
       </template>
       <v-list>
@@ -64,16 +64,11 @@ export default {
   align-items: center;
   padding: 4rem;
 
-  .image {
-  }
-
-  .text {
-
-  }
   .team-name {
-    font-family: 'VT323', monospace;
-    font-size: 5rem;
-    line-height: 60px;
+    font-family: 'Exo', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 80px;
   }
 }
 

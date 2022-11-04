@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="$store.state.teams">
-  <v-card>
+  <v-card dark color="#1e1e1e87">
     <v-card-title>
       B League
     </v-card-title>
@@ -11,7 +11,7 @@
       <v-data-table
         :headers="headers"
         :items="$store.state.teams"
-        class="elevation-1"
+        class="elevation-1 data-table"
         :loading="$store.state.isLoading"
         loading-text="Loading... Please wait"
         :hide-default-footer="true"
@@ -57,5 +57,9 @@
 <style lang="scss" scoped>
 .container {
   padding: 4rem;
+}
+
+.data-table {
+  background: transparent;
 }
 </style>
