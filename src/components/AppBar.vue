@@ -7,6 +7,7 @@
         color="transparent"
         flat
         dark
+        hide-on-scroll
       >
         <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
       
@@ -27,7 +28,7 @@
       </div>
       <v-spacer></v-spacer>
       <v-btn text elevation="0" small>
-        {{ isLoggedIn ? 'Logout' : 'Login' }}
+        {{ $store.state.isLoggedIn ? 'Logout' : 'Login' }}
       </v-btn>
       </v-app-bar>
   </div>
