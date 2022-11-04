@@ -4,8 +4,9 @@
     <v-main>
       <router-view/>
       <v-switch
+          class="theme-toggle"
           v-model="$vuetify.theme.dark"
-          :label="$vuetify.theme.dark ? 'dark mode' : 'light'">
+          :label="$vuetify.theme.dark ? 'Dark Mode' : 'Light Mode'">
         </v-switch>
     </v-main>
   </v-app>
@@ -29,3 +30,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.theme-toggle {
+  margin-left: 20px;
+}
+</style>

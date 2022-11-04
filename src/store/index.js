@@ -22,6 +22,7 @@ export default new Vuex.Store({
     roster: [],
     teams: [],
     isLoading: false,
+    selectedTeam: null,
   },
   getters: {
 
@@ -43,17 +44,21 @@ export default new Vuex.Store({
         .then((response) => response.json())
         .then((data) => {
           state.roster = data.roster.players;
+          state.selectedTeam = state.teams.find(team => team.teamid === teamId)
           console.log(state.roster)
         }).finally(()=> state.isLoading = false)
     },
     GET_TEAMS(state) {
+      state.isLoading = true;
       const url = `https://app.mysportsort.com/view/json/js_getstandings.php?&an=440&sort=0&tid=0&slid=32320&seasontype=1&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667340510330`
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           state.teams = data.seasonstandings.teams;
-          console.log(state.teams)
-        })
+          state.teams = data.seasonstandings.teams.map((team) => {
+            return {...team, points: parseInt(team.points)}
+          })
+        }).finally(() => state.isLoading = false)
     }
   },
   actions: {

@@ -1,37 +1,60 @@
 <template>
-  <div>
-    <div v-if="!$store.state.isLoading">
-      <ul v-for="person in $store.state.roster" :key="person.playerid">
-        <li>
-          {{person.name}}
-        </li>
-      </ul>
-    </div>
-    <div class="loader text-center" v-if="$store.state.isLoading">
-      <v-progress-circular
-      indeterminate
-      color="primary"
-    ></v-progress-circular>
-    </div>
+  <div class="container" v-if="$store.state.roster">
+  <v-card>
+    <v-card-title>
+      {{ $store.state.selectedTeam?.teamname }}
+    </v-card-title>
+    <v-card-subtitle>
+      2022-2023 Season
+    </v-card-subtitle>
+    <v-card-text>
+      <v-data-table
+        :headers="headers"
+        :items="$store.state.roster"
+        class="elevation-1"
+        :loading="$store.state.isLoading"
+        loading-text="Loading... Please wait"
+        :hide-default-footer="true"
+        elevation="0"
+      >
+      <template v-slot:[`item.position`]="{ item }">
+        <v-chip :color="item.position === 'Defense' ? 'green' : 'blue'">
+          {{ item.position }}
+        </v-chip>
+      </template>
+    </v-data-table>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn to="/b-league" color="warning">
+        Back
+      </v-btn>
+    </v-card-actions>
+  </v-card>
   </div>
 </template>
 
 <script>
   export default {
-
-    components: {
-
-    },
     data() {
         return {
-          
-      }
+          headers: [
+            { text: 'Name', value: 'name', width: '200px' },
+            { text: 'Age', value: 'age', width: '100px' },
+            { text: 'City', value: 'city', width: '150px' },
+            { text: 'DOB', value: 'dob', width: '100px' },
+            { text: 'Height', value: 'height', width: '100px' },
+            { text: 'Number', value: 'number', width: '100px'},
+            { text: 'Position', value: 'position', width: '100px'},
+          ]
+        }
    },
-
   }
 </script>
 
 <style lang="scss" scoped>
+.container {
+  padding: 4rem;
+}
 .header {
   display: flex;
   flex-direction: row;

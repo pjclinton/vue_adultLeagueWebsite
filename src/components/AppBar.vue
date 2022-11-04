@@ -8,33 +8,25 @@
       >
         <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-        <v-toolbar-title>Electric Lettuce</v-toolbar-title>
-
-        <v-spacer></v-spacer>
-
-
-        <div class="btn-group">
-        <v-btn
-          to="/RosterView"
-          text
-        >
-          Roster
+        <v-toolbar-title><span class="logo">Electric Lettuce</span></v-toolbar-title>
+        <div class="btn-group ml-10">
+          <v-btn
+            to="/"
+            text
+          >
+          Home
         </v-btn>
         <v-btn
-          to="/"
-          text
-          color="secondary"
-        >
-        Home
+            to="/b-league"
+            text
+          >
+          B-League
+        </v-btn>
+      </div>
+      <v-spacer></v-spacer>
+      <v-btn elevation="0" small color="#d02473">
+        {{ isLoggedIn ? 'Logout' : 'Login' }}
       </v-btn>
-      <v-btn
-          to="/b-league"
-          text
-          color="secondary"
-        >
-        B-League
-      </v-btn>
-    </div>
       </v-app-bar>
   </div>
 </template>
@@ -46,5 +38,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
 </style>
