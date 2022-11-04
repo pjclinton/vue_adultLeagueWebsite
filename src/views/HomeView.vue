@@ -62,6 +62,7 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding: 4rem;
 
   .image {
   }
@@ -72,6 +73,7 @@ export default {
   .team-name {
     font-family: 'VT323', monospace;
     font-size: 5rem;
+    line-height: 60px;
   }
 }
 
