@@ -3,11 +3,6 @@
     <app-bar />
     <v-main>
       <router-view/>
-      <v-switch
-          class="theme-toggle"
-          v-model="$vuetify.theme.dark"
-          :label="$vuetify.theme.dark ? 'Dark Mode' : 'Light Mode'">
-        </v-switch>
     </v-main>
   </v-app>
 </template>
@@ -32,6 +27,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;700&family=Overpass:wght@100;400;900&display=swap');
+#app {
+  background: #ad5389;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  font-family: 'Overpass', sans-serif;
+
+}
 .theme-toggle {
   margin-left: 20px;
 }
