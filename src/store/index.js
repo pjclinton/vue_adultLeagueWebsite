@@ -1,5 +1,3 @@
-// Fix GET_LEAGUES mutation. 
-// Change getTeams in the store, so that it can take a payload which will be the leagueid - or something like that.
 // Should be in the array that gets returned from the getStandingsApi call. 
 // Will need to update the url in getTeams to pass it the leagueid payload.
 
@@ -29,6 +27,7 @@ export default new Vuex.Store({
     teams: [],
     isLoading: false,
     selectedTeam: null,
+    selectedLeagueId: null,
   },
   getters: {
 
@@ -43,37 +42,38 @@ export default new Vuex.Store({
         state.roster = JSON.parse(localStorage.getItem('roster'))
       }
     },
-    GET_LEAGUES(state, leagueid) {
+    GET_LEAGUES(state) {
       state.isLoading = true;
-      const url = `https://app.mysportsort.com/view/json/js_getleagues.php?&leagueid=${leagueid}&an=440&sportid=0&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667579886531`
+      const url = `https://app.mysportsort.com/view/json/js_getcurrentleagues.php?&an=440&dts=7&sportid=0&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667677124908`
       fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        state.roster = data.roster.players;
-        state.selectedTeam = state.teams.find(team => team.teamid === teamId)
-        console.log(state.roster)
+        state.leagues = data.leagues.seasons;
       }).finally(()=> state.isLoading = false)
     },
-    GET_ROSTER(state, teamId) {
+    GET_ROSTER(state, payload) {
       state.isLoading = true;
-      const url = `https://app.mysportsort.com/view/json/js_getteamroster.php?&teamid=${teamId}&an=440&slid=32320&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667507787564`
+      console.log(payload)
+      console.log(payload.teamId);
+      const url = `https://app.mysportsort.com/view/json/js_getteamroster.php?&teamid=${payload.teamId}&an=440&slid=${payload.leagueid}&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667507787564`
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           state.roster = data.roster.players;
-          state.selectedTeam = state.teams.find(team => team.teamid === teamId)
+          state.selectedTeam = state.teams.find(team => team.teamid === payload.teamId)
           console.log(state.roster)
         }).finally(()=> state.isLoading = false)
     },
-    GET_TEAMS(state) {
+    GET_TEAMS(state, leagueid) {
       state.isLoading = true;
-      const url = `https://app.mysportsort.com/view/json/js_getstandings.php?&an=440&sort=0&tid=0&slid=32320&seasontype=1&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667340510330`
+      const url = `https://app.mysportsort.com/view/json/js_getstandings.php?&=an=440&sort=0&tid=0&slid=${leagueid}&seasontype=1&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667340510330`
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           state.teams = data.seasonstandings.teams.map((team) => {
             return {...team, points: parseInt(team.points)}
           })
+          state.selectedLeagueId = leagueid
         }).finally(() => state.isLoading = false)
     }
   },
@@ -84,11 +84,14 @@ export default new Vuex.Store({
     getLocalStorage({commit}) {
       commit('GET_LOCAL_STORAGE')
     },
-    getRoster({commit}, teamId) {
-      commit('GET_ROSTER', teamId)
+    getLeagues({commit}) {
+      commit('GET_LEAGUES')
     },
-    getTeams({commit}) {
-      commit('GET_TEAMS')
+    getRoster({commit}, payload) {
+      commit('GET_ROSTER', payload)
+    },
+    getTeams({commit}, leagueid) {
+      commit('GET_TEAMS', leagueid)
     }
   },
   modules: {

@@ -46,8 +46,12 @@
     },
     methods: {
       handleRosterSel(teamId) {
+        console.log(teamId);
         this.$store.state.roster = []
-        this.$store.dispatch('getRoster', teamId)
+        this.$store.dispatch('getRoster', {
+          leagueid: this.$store.state.selectedLeagueId,
+          teamId:teamId
+        })
         this.$router.push('/roster')
       }
     }

@@ -20,8 +20,9 @@ export default {
     //
   }),
   async created() {
-    this.$store.dispatch('getLocalStorage')
-    this.$store.dispatch('getTeams')
+    // this.$store.dispatch('getLocalStorage')
+    this.$store.dispatch('getLeagues')
+    // this.$store.dispatch('getTeams')
   }
 };
 </script>
