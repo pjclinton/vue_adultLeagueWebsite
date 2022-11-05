@@ -19,12 +19,6 @@
           >
           Home
         </v-btn>
-        <v-btn
-            to="/standings"
-            text
-          >
-          Standings
-        </v-btn>
       </div>
       <v-spacer></v-spacer>
       <v-btn text elevation="0" small>

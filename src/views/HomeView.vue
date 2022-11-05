@@ -1,5 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container" 
+  v-if="$store.state.leagues.length>0"
+  >
     <div class="text">
       <div class="team-name">Beer League Heroes</div>
       <p class="pt-6">Stat collections for Austin Area Ice Hockey Leagues!</p>
@@ -22,10 +24,11 @@
       </template>
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(item, i) in $store.state.leagues"
           :key="i"
+          @click='handleLeagueSel(item.seasonleagueid)'
         >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-title>{{ item.leaguename }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -51,6 +54,14 @@ export default {
         { title: 'Click Me 2' },
       ],
     }),
+    methods: {
+      handleLeagueSel(leagueid) {
+        console.log(leagueid)
+        this.$store.dispatch('getTeams', leagueid);
+        this.$store.dispatch('setLeagueId', leagueid);
+        this.$router.push('/standings');
+      }
+    }
   }
 
 </script>
