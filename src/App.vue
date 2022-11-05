@@ -2,7 +2,9 @@
   <v-app>
     <app-bar />
     <v-main>
+      <Transition name="fade"  mode="out-in">
       <router-view/>
+    </Transition>
     </v-main>
   </v-app>
 </template>
@@ -38,5 +40,13 @@ export default {
 }
 .theme-toggle {
   margin-left: 20px;
+}
+.fade-enter-active, .fade-leave-active{
+  transition: all 0.4s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>
