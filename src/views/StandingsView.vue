@@ -1,11 +1,11 @@
 <template>
   <div class="container" v-if="$store.state.teams">
-  <v-card dark color="#1e1e1e87">
+  <v-card dark color="#1e1e1e87" v-if="$store.state.selectedLeague">
     <v-card-title>
-      B League
+      {{ $store.state.selectedLeague.leaguename }}
     </v-card-title>
     <v-card-subtitle>
-      2022-2023 Season
+      {{$store.state.selectedLeague.startdate}} - {{$store.state.selectedLeague.enddate}}
     </v-card-subtitle>
     <v-card-text>
       <v-data-table
@@ -18,12 +18,17 @@
         elevation="0"
       >
       <template v-slot:[`item.teamid`]="{ item }">
-        <v-btn small @click="handleRosterSel(item.teamid)">
+        <v-btn color="#0A8754" small @click="handleRosterSel(item.teamid)">
           View Roster
         </v-btn>
       </template>
     </v-data-table>
     </v-card-text>
+    <v-card-actions>
+      <v-btn to="/" color="#0A8754">
+        Back
+      </v-btn>
+    </v-card-actions>
   </v-card>
   </div>
 </template>
@@ -39,7 +44,7 @@
         { text: 'Losses', value: 'losses', width: '100px' },
         { text: 'OT Losses', value: 'otl', width: '115px' },
         { text: 'Ties', value: 'ties', width: '100px'},
-        { text: 'Last Five', value: 'lastfive', width: '100px'},
+        { text: 'Last Five', value: 'lastfive', width: '115px'},
         { text: '', value: 'teamid', width: '100px'},
         ]
       }
@@ -50,7 +55,7 @@
         this.$store.state.roster = []
         this.$store.dispatch('getRoster', {
           leagueid: this.$store.state.selectedLeagueId,
-          teamId:teamId
+          teamId: teamId
         })
         this.$router.push('/roster')
       }
