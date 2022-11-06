@@ -18,14 +18,14 @@
         elevation="0"
       >
       <template v-slot:[`item.position`]="{ item }">
-        <v-chip :color="item.position === 'Defense' ? 'green' : 'blue'">
+        <v-chip :color="item.position === 'Defense' ? '#0A8754' : '#759FBC'">
           {{ item.position }}
         </v-chip>
       </template>
     </v-data-table>
     </v-card-text>
     <v-card-actions>
-      <v-btn to="/standings" color="warning">
+      <v-btn to="/standings" color="#0A8754">
         Back
       </v-btn>
     </v-card-actions>
