@@ -1,24 +1,10 @@
-// Should be in the array that gets returned from the getStandingsApi call. 
+// Should be in the array that gets returned from the getStandingsApi call.
 // Will need to update the url in getTeams to pass it the leagueid payload.
 
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
-
-export class player {
-  playerid = "1029534";
-  name = "Todd Hummel";
-  height = "";
-  weight= "";
-  city= "";
-  state= "";
-  dob= "09/13/1987";
-  age= 35;
-  number= "13";
-  facebook= "0";
-  position= "Defense";
-}
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -28,72 +14,76 @@ export default new Vuex.Store({
     isLoading: false,
     selectedTeam: null,
     selectedLeagueId: null,
+    selectedLeague: null,
   },
-  getters: {
-
-  },
+  getters: {},
   mutations: {
     ADD_PLAYER(state, payload) {
       state.roster.push(payload);
-      localStorage.setItem('roster', JSON.stringify((state.roster)))
+      localStorage.setItem("roster", JSON.stringify(state.roster));
     },
     GET_LOCAL_STORAGE(state) {
-      if (localStorage.getItem('roster') !== null) {
-        state.roster = JSON.parse(localStorage.getItem('roster'))
+      if (localStorage.getItem("roster") !== null) {
+        state.roster = JSON.parse(localStorage.getItem("roster"));
       }
     },
     GET_LEAGUES(state) {
       state.isLoading = true;
-      const url = `https://app.mysportsort.com/view/json/js_getcurrentleagues.php?&an=440&dts=7&sportid=0&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667677124908`
+      const url = `https://app.mysportsort.com/view/json/js_getcurrentleagues.php?&an=440&dts=7&sportid=0&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667677124908`;
       fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        state.leagues = data.leagues.seasons;
-      }).finally(()=> state.isLoading = false)
+        .then((response) => response.json())
+        .then((data) => {
+          state.leagues = data.leagues.seasons;
+        })
+        .finally(() => (state.isLoading = false));
     },
     GET_ROSTER(state, payload) {
       state.isLoading = true;
-      console.log(payload)
-      console.log(payload.teamId);
-      const url = `https://app.mysportsort.com/view/json/js_getteamroster.php?&teamid=${payload.teamId}&an=440&slid=${payload.leagueid}&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667507787564`
+      const url = `https://app.mysportsort.com/view/json/js_getteamroster.php?&teamid=${payload.teamId}&an=440&slid=${payload.leagueid}&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667507787564`;
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           state.roster = data.roster.players;
-          state.selectedTeam = state.teams.find(team => team.teamid === payload.teamId)
-          console.log(state.roster)
-        }).finally(()=> state.isLoading = false)
+          state.selectedTeam = state.teams.find(
+            (team) => team.teamid === payload.teamId
+          );
+        })
+        .finally(() => (state.isLoading = false));
     },
     GET_TEAMS(state, leagueid) {
       state.isLoading = true;
-      const url = `https://app.mysportsort.com/view/json/js_getstandings.php?&=an=440&sort=0&tid=0&slid=${leagueid}&seasontype=1&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667340510330`
+      const url = `https://app.mysportsort.com/view/json/js_getstandings.php?&=an=440&sort=0&tid=0&slid=${leagueid}&seasontype=1&uid=0&key=&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667340510330`;
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           state.teams = data.seasonstandings.teams.map((team) => {
-            return {...team, points: parseInt(team.points)}
-          })
-          state.selectedLeagueId = leagueid
-        }).finally(() => state.isLoading = false)
-    }
+            return { ...team, points: parseInt(team.points) };
+          });
+          state.selectedLeagueId = leagueid;
+          console.log(state.leagues);
+          state.selectedLeague = state.leagues.find(
+            (league) => league.seasonleagueid === leagueid
+          );
+        })
+        .finally(() => (state.isLoading = false));
+    },
   },
   actions: {
     addPlayer({ commit }, payload) {
-      commit('ADD_PLAYER', payload)
+      commit("ADD_PLAYER", payload);
     },
-    getLocalStorage({commit}) {
-      commit('GET_LOCAL_STORAGE')
+    getLocalStorage({ commit }) {
+      commit("GET_LOCAL_STORAGE");
     },
-    getLeagues({commit}) {
-      commit('GET_LEAGUES')
+    getLeagues({ commit }) {
+      commit("GET_LEAGUES");
     },
-    getRoster({commit}, payload) {
-      commit('GET_ROSTER', payload)
+    getRoster({ commit }, payload) {
+      commit("GET_ROSTER", payload);
     },
-    getTeams({commit}, leagueid) {
-      commit('GET_TEAMS', leagueid)
-    }
+    getTeams({ commit }, leagueid) {
+      commit("GET_TEAMS", leagueid);
+    },
   },
-  modules: {
-  }
-})
+  modules: {},
+});
