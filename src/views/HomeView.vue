@@ -3,23 +3,29 @@
   v-if="$store.state.leagues.length>0"
   >
     <div class="text">
+      <div class="location thin">
+        Austin, Texas - Adult League Hockey
+      </div>
       <div class="team-name">Beer League Heroes</div>
-      <p class="pt-6">Stat collections for Austin Area Ice Hockey Leagues!</p>
-      
-
+      <p class="pt-6">View standings and rosters for Austin area Adult Hockey leagues.</p>
       <v-menu
       transition="slide-y-transition"
       bottom
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          class="purple"
-          color="#ad5389"
+          color="#0A8754"
           dark
           v-bind="attrs"
           v-on="on"
         >
-        Select a rink! 
+        Select a League! 
+        <v-icon
+        right
+        dark
+      >
+        mdi-chevron-down
+      </v-icon>
         </v-btn>
       </template>
       <v-list>
@@ -33,10 +39,10 @@
       </v-list>
     </v-menu>
     </div>
-    <div>
+    <div class="d-none d-md-block">
       <v-img class="image"
-        src="../assets/hockeyGuy.png"
-        max-width="400px">
+        src="../assets/goalie1.svg"
+        width="500px">
       </v-img>
     </div>
   </div>
@@ -56,9 +62,7 @@ export default {
     }),
     methods: {
       handleLeagueSel(leagueid) {
-        console.log(leagueid)
         this.$store.dispatch('getTeams', leagueid);
-        this.$store.dispatch('setLeagueId', leagueid);
         this.$router.push('/standings');
       }
     }
@@ -75,11 +79,18 @@ export default {
   align-items: center;
   padding: 4rem;
 
+  .location {
+    text-transform: uppercase;
+    font-size: 18px;
+  }
   .team-name {
     font-family: 'Exo', sans-serif;
     font-weight: 900;
     font-size: 4rem;
     line-height: 80px;
+  }
+  .image {
+    opacity: .65;
   }
 }
 

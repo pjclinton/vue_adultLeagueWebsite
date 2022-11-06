@@ -10,15 +10,11 @@
         hide-on-scroll
       >
         <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-      
-        <v-toolbar-title><span class="logo">Electric Lettuce</span></v-toolbar-title>
+        <router-link to="/">
+          <div class="logo xblack">Beer League Heroes</div>
+        </router-link>
+        
         <div class="btn-group ml-10">
-          <v-btn
-            to="/"
-            text
-          >
-          Home
-        </v-btn>
       </div>
       <v-spacer></v-spacer>
       <v-btn text elevation="0" small>
@@ -37,10 +33,15 @@
 <style lang="scss" scoped>
 .logo {
   margin-bottom: 3px;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 .btn-group {
   display: flex;
   gap: 8px;
-
+}
+a {
+  text-decoration: none;
+  color: inherit !important;
 }
 </style>
