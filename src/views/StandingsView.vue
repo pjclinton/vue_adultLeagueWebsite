@@ -18,14 +18,14 @@
         elevation="0"
       >
       <template v-slot:[`item.teamid`]="{ item }">
-        <v-btn color="#0A8754" small @click="handleRosterSel(item.teamid)">
+        <v-btn color="#254bc8" small @click="handleRosterSel(item.teamid)">
           View Roster
         </v-btn>
       </template>
     </v-data-table>
     </v-card-text>
     <v-card-actions>
-      <v-btn to="/" color="#0A8754">
+      <v-btn to="/" color="#C8102E">
         Back
       </v-btn>
     </v-card-actions>
