@@ -69,6 +69,11 @@
             link: '/'
           },
           {
+            title: 'Events',
+            icon: 'mdi-calendar',
+            link: '/events'
+          },
+          {
             title: 'Login',
             icon: 'mdi-account',
             link: '/login'
