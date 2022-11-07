@@ -14,15 +14,17 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          color="#0A8754"
+          color="#254bc8"
           dark
           v-bind="attrs"
           v-on="on"
+          large
         >
         Select a League! 
         <v-icon
         right
         dark
+        class="pl-6 pr-2"
       >
         mdi-chevron-down
       </v-icon>
@@ -41,8 +43,8 @@
     </div>
     <div class="d-none d-md-block">
       <v-img class="image"
-        src="../assets/goalie1.svg"
-        width="500px">
+        src="../assets/greatone.svg"
+        width="300px">
       </v-img>
     </div>
   </div>
@@ -75,9 +77,9 @@ export default {
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 4rem;
+  padding: 6rem 4rem;
 
   .location {
     text-transform: uppercase;
@@ -90,7 +92,7 @@ export default {
     line-height: 80px;
   }
   .image {
-    opacity: .65;
+    opacity: .85;
   }
 }
 
