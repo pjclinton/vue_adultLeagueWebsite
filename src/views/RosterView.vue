@@ -26,6 +26,7 @@
     </v-card-text>
     <v-card-actions>
       <v-btn to="/standings" color="#0A8754">
+        <v-icon>mdi-chevron-left</v-icon>
         Back
       </v-btn>
     </v-card-actions>

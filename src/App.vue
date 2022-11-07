@@ -32,9 +32,8 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;700&family=Overpass:wght@100;400;900&display=swap');
 #app {
-  background: #141E30;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: rgb(4,30,66);
+background: linear-gradient(146deg, rgba(4,30,66,1) 0%, rgba(200,16,46,1) 100%);
 color: #fff;
   font-family: 'Overpass', sans-serif;
 
