@@ -73,13 +73,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight&family=VT323&display=swap');
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 6rem 4rem;
+  padding: 3rem 4rem;
 
   .location {
     text-transform: uppercase;
