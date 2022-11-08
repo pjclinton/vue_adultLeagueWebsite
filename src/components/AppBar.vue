@@ -10,11 +10,11 @@
         <v-list-item-content style="overflow-wrap: break-word;">
           <v-list-item-title class="text-h6">
             Beer League Hockey! <br>
-            <span class="thin" style="text-transform:'uppercase';">AUSTIN, TEXAS</span>
+            <span class="thin" style="text-transform:uppercase;">AUSTIN, TEXAS</span>
           </v-list-item-title>
           <v-list-item-subtitle>
-            "My teeth weren’t that good to begin with, so hopefully I can get some better ones." <br>
-            <span class="thin">- Duncan Keith</span>
+            "{{ quote.quote }}" <br>
+            <span class="thin">- {{quote.author}}</span>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { quotes } from '../assets/hockey-quotes'
   export default {
     data() {
       return {
@@ -79,6 +80,12 @@
             link: '/login'
           },
         ]
+      }
+    },
+    computed: {
+      quote() {
+        const num = Math.floor(Math.random() * quotes.length + 0);
+        return quotes[num];
       }
     },
   }
