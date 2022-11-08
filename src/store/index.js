@@ -29,6 +29,7 @@ export default new Vuex.Store({
         state.roster = JSON.parse(localStorage.getItem("roster"));
       }
     },
+    // using mysport api found on crossovertx site.
     GET_LEAGUES(state) {
       state.isLoading = true;
       const url = `https://app.mysportsort.com/view/json/js_getcurrentleagues.php?&an=440&dts=7&sportid=0&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667677124908`;
@@ -69,6 +70,17 @@ export default new Vuex.Store({
         })
         .finally(() => (state.isLoading = false));
     },
+    GET_STATS(state, leagueid) {
+      state.isLoading = true;
+      const url = `https://app.mysportsort.com/view/json/js_getseasonleaders.php?&an=440&slid=${leagueid}&tid=0&pl=&seasontype=&uid=0&key=&sort=2&bottom=0&numperpage=60&mingames=0&securetoken=hdsLWNC*%403b772%40gd2%40AhhhdcxqnwdvA01!!nce7cX&_=1667914388740`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.leagueleaders.leaders)
+        })
+        .finally(() => (state.isLoading = false));
+    },
+    // uses multiple sources to get stick times.
     GET_CHAP_SKATES(state) {
       state.isLoading = true;
       const url = "https://apps.daysmartrecreation.com/dash/jsonapi/api/v1/teams?cache[save]=false&page[size]=10&sort=start_date&include=registrationInfo%2Cfacility%2Cleague.season.priorities.memberships%2CskillLevel%2CprogramType%2Csport%2Cleague.houseProduct.locations%2Cproduct.locations%2Cevents%2CregistrableEvents&filter[league_id]=2289&filter[visible_online]=true&company=chaparralice";
@@ -149,7 +161,7 @@ export default new Vuex.Store({
         }
       })
       state.pondEvents = events;
-    }
+    },
   },
   actions: {
     addPlayer({ commit }, payload) {
@@ -172,6 +184,9 @@ export default new Vuex.Store({
     },
     getPondSkates({commit}) {
       commit('GET_POND_SKATES')
+    },
+    getStats({commit}, leagueid) {
+      commit('GET_STATS', leagueid);
     }
   },
   modules: {},
