@@ -9,7 +9,7 @@
       <div class="team-name">Beer League Heroes</div>
       <p class="pt-6">View standings and rosters for Austin area Adult Hockey leagues.</p>
       <v-menu
-      transition="slide-y-transition"
+      offset-y
       bottom
     >
       <template v-slot:activator="{ on, attrs }">
