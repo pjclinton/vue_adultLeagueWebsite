@@ -1,20 +1,20 @@
 <template>
-  <div v-if="$store.state.chapEvents.length > 0">
+  <div class="container" v-if="$store.state.chapEvents.length > 0">
     <div v-for="event in $store.state.chapEvents" :key="event.id">
-
-          <event-card
+      <event-card 
       :hockeyEvent="event"
-    ></event-card>
+      >
+      </event-card>
     </div>
 
     <v-divider></v-divider>
-    <ul v-for="(event, index) in $store.state.pondEvents" :key="index">
-      <li>
-        <a target="_blank" :href="event.url">
-        {{event.date.toString()}}
-      </a>
-      </li>
-    </ul>
+    
+    <div v-for="(event, index) in $store.state.pondEvents" :key="index">
+      <event-card 
+      :hockeyEvent="event"
+      >
+      </event-card>
+    </div>
   </div>
 </template>
 
