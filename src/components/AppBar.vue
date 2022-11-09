@@ -14,6 +14,7 @@
           </v-list-item-title>
           <v-list-item-subtitle>
             "{{ quote.quote }}" <br>
+            <br>
             <span class="thin">- {{quote.author}}</span>
           </v-list-item-subtitle>
         </v-list-item-content>
