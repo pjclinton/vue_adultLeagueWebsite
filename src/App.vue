@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <app-bar />
+    <nav-bar />
     <v-main>
       <Transition name="fade"  mode="out-in">
       <router-view/>
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import AppBar from '@/components/AppBar.vue';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'App',
   components: {
-    AppBar,
+    NavBar,
   },
 
   data: () => ({
