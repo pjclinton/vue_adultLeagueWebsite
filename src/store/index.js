@@ -1,6 +1,3 @@
-// Should be in the array that gets returned from the getStandingsApi call.
-// Will need to update the url in getTeams to pass it the leagueid payload.
-
 import Vue from "vue";
 import Vuex from "vuex";
 
@@ -11,6 +8,7 @@ export default new Vuex.Store({
     leagues: [],
     roster: [],
     teams: [],
+    stats: [],
     chapEvents: [],
     pondEvents: [],
     isLoading: false,
@@ -77,7 +75,7 @@ export default new Vuex.Store({
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.leagueleaders.leaders)
+          state.stats = data.leagueleaders.leaders
         })
         .finally(() => (state.isLoading = false));
     },
