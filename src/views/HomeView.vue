@@ -59,12 +59,13 @@ export default {
         { title: 'Click Me' },
         { title: 'Click Me' },
         { title: 'Click Me' },
-        { title: 'Click Me 2' },
+        { title: 'Click Me' },
       ],
     }),
     methods: {
       handleLeagueSel(leagueid) {
         this.$store.dispatch('getTeams', leagueid);
+        this.$store.dispatch('getStats', leagueid)
         this.$router.push('/standings');
       }
     }
