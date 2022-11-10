@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <v-card dark color="#1e1e1e87">
+    <v-card class="card" dark color="#1e1e1e87">
       <v-card-title>
         {{ title }}
       </v-card-title>
@@ -10,13 +9,12 @@
       <v-card-text>
         {{ description }}
       </v-card-text>
-      <v-card-action>
+      <v-card-actions>
         <v-btn :href="hockeyEvent.url" target="_blank" color="#247BA0">
           Register
         </v-btn>
-      </v-card-action>
+      </v-card-actions>
     </v-card>
-  </div>
 </template>
 
 <script>
@@ -36,5 +34,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.card {
+  width: 500px;
+}
 </style>
