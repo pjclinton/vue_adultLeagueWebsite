@@ -25,7 +25,7 @@
     props: ['hockeyEvent'],
     computed: {
       description() {
-        return this.hockeyEvent.description ? this.hockeyEvent.description : "Open hockey. Full gear required. All ages welcome. Two Goalies are allowed per session max. Any goalie wishing to skate as a player must pay for the session. We wil be testing our roster visibility so this may used to help navigate Goalie registration. If more than two goalies are on the roster it will be on a first registered basis for priority. The other skaters may be asked to pay."
+        return this.hockeyEvent.description ? this.hockeyEvent.description : "Open hockey. Full gear required. All ages welcome. Two Goalies are allowed per session max. Any goalie wishing to skate as a player must pay for the session. If more than two goalies are on the roster it will be on a first registered basis for priority. The other skaters may be asked to pay."
       }
     },
   }
