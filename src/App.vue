@@ -22,11 +22,7 @@ export default {
     //
   }),
   async created() {
-    // this.$store.dispatch('getLocalStorage')
     this.$store.dispatch('getLeagues')
-    this.$store.dispatch('getChapSkates')
-    this.$store.dispatch('getPondSkates')
-    this.$store.dispatch('getStats', '32320')
   }
 };
 </script>

@@ -43,9 +43,9 @@
       </v-list>
     </v-navigation-drawer>
       <v-app-bar
-        class="pl-10 pr-10 pt-3"
+
         app
-        color="transparent"
+        color="#041E42"
         flat
         dark
         hide-on-scroll
@@ -113,15 +113,17 @@ a {
   cursor: pointer;
   background: url('../assets/hockeyPuck.svg');
   background-size: contain;
-  height: calc(150px / 4);
-  width: calc(269px / 4);
+  height: calc(90px / 4);
+  width: calc(180px / 4);
   margin-right: 20px;
+  background-repeat: no-repeat;
+
 }
 .puck {
   cursor: pointer;
   background: url('../assets/puckHover.svg');
-  height: calc(250px / 4);
-  width: calc(269px / 4);
+  height: calc(150px / 4);
+  width: calc(180px / 4);
   background-repeat: no-repeat;
   margin-right: 20px;
 }
