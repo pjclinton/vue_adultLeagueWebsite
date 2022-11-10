@@ -29,6 +29,7 @@ export default new Vuex.Store({
         state.roster = JSON.parse(localStorage.getItem("roster"));
       }
     },
+    
     // using mysport api found on crossovertx site.
     GET_LEAGUES(state) {
       state.isLoading = true;
