@@ -5,7 +5,7 @@
         <v-list-item-content>
           <!-- <v-img contain height="50px" src="logoIcon.svg" class="mb-2"></v-img> -->
           <v-list-item-title class="text-h6">
-            Austin Hockey Connection<br /><br />
+            Beer League Heroes<br /><br />
           </v-list-item-title>
           <v-list-item-subtitle>
             "{{ quote.quote }}" <br />
@@ -40,7 +40,7 @@
 
       <v-toolbar-title
         ><router-link to="/"
-          ><span class="logo-title">Austin Hockey Connection</span>
+          ><span class="logo-title">Beer League Heroes</span>
         </router-link>
       </v-toolbar-title>
 

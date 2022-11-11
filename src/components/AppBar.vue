@@ -40,7 +40,7 @@
         @click.stop="drawer = !drawer"
       ></div>
       <router-link to="/">
-        <div class="logo xblack">Austin Hockey Connection</div>
+        <div class="logo xblack">Beer League Heroes</div>
       </router-link>
     </v-app-bar>
   </div>
