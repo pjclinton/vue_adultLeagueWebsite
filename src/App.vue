@@ -17,13 +17,6 @@ export default {
   components: {
     NavBar,
   },
-
-  data: () => ({
-    //
-  }),
-  async created() {
-    this.$store.dispatch('getLeagues')
-  }
 };
 </script>
 
@@ -31,8 +24,8 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;700&family=Overpass:wght@100;400;900&display=swap');
 #app {
   background: rgb(4,30,66);
-background: linear-gradient(146deg, rgba(4,30,66,1) 0%, rgba(200,16,46,1) 100%);
-color: #fff;
+  background: linear-gradient(146deg, rgba(4,30,66,1) 0%, rgba(200,16,46,1) 100%);
+  color: #fff;
   font-family: 'Overpass', sans-serif;
 
 }
