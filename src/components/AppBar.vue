@@ -44,7 +44,7 @@
       >
         <div :class="drawer ? 'puck' : 'puckActive'" @click.stop="drawer = !drawer"></div>
         <router-link to="/">
-          <div class="logo xblack">Beer League Heroes</div>
+          <div class="logo xblack">Austin Hockey Connection</div>
         </router-link>
       </v-app-bar>
   </div>
@@ -96,7 +96,7 @@ export default {
 }
 a {
   text-decoration: none;
-  color: inherit !important;
+  color: #fff !important;
 }
 .nav-drawer {
   background: #041e42;
