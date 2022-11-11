@@ -10,7 +10,7 @@
         {{ description }}
       </v-card-text>
       <v-card-actions>
-        <v-btn :href="hockeyEvent.url" target="_blank" color="#247BA0">
+        <v-btn :href="hockeyEvent.url" target="_blank" color="accent">
           Register
         </v-btn>
       </v-card-actions>

@@ -45,7 +45,7 @@
       <v-app-bar
 
         app
-        color="#041E42"
+        color="primary"
         flat
         dark
         hide-on-scroll
