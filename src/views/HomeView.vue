@@ -1,45 +1,21 @@
 <template>
-  <div class="container" 
-  v-if="$store.state.leagues.length>0"
-  >
+  <div class="container">
     <div class="text">
       <div class="location thin">
         Austin, Texas - Adult League Hockey
       </div>
       <div class="team-name">Beer League Heroes</div>
       <p class="pt-6">View standings and rosters for Austin area Adult Hockey leagues.</p>
-      <v-menu
-      offset-y
-      bottom
-    >
-      <template v-slot:activator="{ on, attrs }">
         <v-btn
           color="#254bc8"
           dark
           v-bind="attrs"
           v-on="on"
           large
+          to="/locations/crossover"
         >
-        Select a League! 
-        <v-icon
-        right
-        dark
-        class="pl-6 pr-2"
-      >
-        mdi-chevron-down
-      </v-icon>
+        View Crossover Leagues
         </v-btn>
-      </template>
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in $store.state.leagues"
-          :key="i"
-          @click='handleLeagueSel(item.seasonleagueid)'
-        >
-          <v-list-item-title>{{ item.leaguename }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
     </div>
     <div class="d-none d-md-block">
       <v-img class="image"
