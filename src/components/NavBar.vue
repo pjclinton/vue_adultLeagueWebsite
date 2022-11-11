@@ -1,14 +1,13 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app temporary>
+    <v-navigation-drawer v-model="drawer" app temporary dark color="primary">
       <v-list-item>
         <v-list-item-content>
           <!-- <v-img contain height="50px" src="logoIcon.svg" class="mb-2"></v-img> -->
-          <v-list-item-title class="text-h6 text-center">
-            Beer League Hockey! <br>
-            <span class="thin" style="text-transform:uppercase;">AUSTIN, TEXAS</span>
+          <v-list-item-title class="text-h6">
+            Austin Hockey Connection<br><br>
           </v-list-item-title>
-          <v-list-item-subtitle class="text-center">
+          <v-list-item-subtitle>
             "{{ quote.quote }}" <br>
             <br>
             <span class="thin">- {{quote.author}}</span>
@@ -24,11 +23,8 @@
           :key="item.title"
           :to="item.link"
           link
+          :disabled="item.disabled"
         >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
@@ -43,7 +39,7 @@
       ></v-app-bar-nav-icon>
       
         <v-toolbar-title
-          ><router-link to="/"><span class="logo-title">Beer League Heroes</span>
+          ><router-link to="/"><span class="logo-title">Austin Hockey Connection</span>
             </router-link>
           </v-toolbar-title> 
      
@@ -55,7 +51,7 @@
         v-for="item in items"
         :key="item.title"
       >
-        <v-btn class="ml-1 mr-1" text :to="item.link">{{ item.title }}</v-btn>
+        <v-btn class="ml-1 mr-1" :disabled="item.disabled" text :to="item.link">{{ item.title }}</v-btn>
       </div>
     </v-app-bar>
   </div>
@@ -68,11 +64,11 @@ export default {
   data: () => ({
     drawer: false,
     items: [
-      { title: "Northcross", link: "/locations/northcross" },
-      { title: "Crossover", link: "/locations/crossover" },
-      { title: "The Pond", link: "/locations/pond" },
-      { title: "Events", link: "/events" },
-      { title: "Login", link: "/login" },
+      { title: "Northcross", link: "/locations/northcross", disabled: true },
+      { title: "Crossover", link: "/locations/crossover", disabled: false },
+      { title: "The Pond", link: "/locations/pond", disabled: true },
+      { title: "Events", link: "/events", disabled: false },
+      { title: "Login", link: "/login", disabled: true },
     ],
   }),
   computed: {
@@ -96,5 +92,8 @@ export default {
 a {
   text-decoration: none;
   color: #fff !important;
+}
+.v-list-item__subtitle {
+  white-space: wrap !important;
 }
 </style>
