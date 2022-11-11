@@ -19,7 +19,7 @@
               >
                 <v-scroll-y-transition>
                   <div class="text-h2 flex-grow-1 text-center">
-                    Chaparelle Ice
+                    Chaparral Ice
                   </div>
                 </v-scroll-y-transition>
               </v-card>
