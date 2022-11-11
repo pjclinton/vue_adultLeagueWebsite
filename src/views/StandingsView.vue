@@ -19,7 +19,7 @@
           elevation="0"
         >
           <template v-slot:[`item.teamid`]="{ item }">
-            <v-btn color="#254bc8" small @click="handleRosterSel(item.teamid)">
+            <v-btn color="#8D918D" small @click="handleRosterSel(item.teamid)">
               View Roster
             </v-btn>
           </template>
@@ -44,6 +44,11 @@
           loading-text="Loading... Please wait"
           elevation="0"
         >
+        <template v-slot:[`item.rank`]="{ item }">
+        <v-chip color="blue">
+          {{ item.rank }}
+        </v-chip>
+      </template>
         </v-data-table>
       </v-card-text>
     </v-card>
@@ -67,10 +72,9 @@ export default {
       statsHeaders: [
         { text: "Rank", value: "rank"},
         { text: "Name", value: "name"},
+        { text: "Team", value: "teamabbr"},
         { text: "Number", value: "number"},
         { text: "Position", value: "position"},
-        { text: "Season", value: "seasonname"},
-        { text: "Team", value: "teamabbr"},
         { text: "GP", value: "gp"},
         { text: "Goals", value: "goals"},
         { text: "Assists", value: "assists"},
@@ -79,7 +83,6 @@ export default {
         { text: "SHG", value: "shgoals"},
         { text: "PIMs", value: "pim"},
         { text: "Pts/G", value: "ppg"},
-        { text: "+/-", value: "plusminus"},
       ],
     };
   },
