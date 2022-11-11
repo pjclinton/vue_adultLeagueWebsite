@@ -32,6 +32,11 @@ const routes = [
     name: "events",
     component: () => import("../views/EventsView.vue"),
   },
+  {
+    path: "/locations/:id",
+    name: "locations",
+    component: () => import("../views/LocationsView.vue"),
+  },
 ];
 
 const router = new VueRouter({
