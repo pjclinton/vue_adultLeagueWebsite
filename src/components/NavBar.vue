@@ -41,9 +41,12 @@
         @click="drawer = !drawer"
         class="d-md-none"
       ></v-app-bar-nav-icon>
-      <v-toolbar-title
-        ><span class="logo-title">Austin Hockey Connection</span></v-toolbar-title
-      >
+      
+        <v-toolbar-title
+          ><router-link to="/"><span class="logo-title">Beer League Heroes</span>
+            </router-link>
+          </v-toolbar-title> 
+     
 
       <v-spacer> </v-spacer>
 
@@ -54,14 +57,6 @@
       >
         <v-btn class="ml-1 mr-1" text :to="item.link">{{ item.title }}</v-btn>
       </div>
-      <!-- <div>
-        <template v-if="loginState">
-          <v-btn color="primary" class="ml-4">Logout</v-btn>
-        </template>
-        <template v-else>
-          <v-btn color="accent" class="ml-4" to="/login">Login</v-btn>
-        </template>
-      </div> -->
     </v-app-bar>
   </div>
 </template>
@@ -98,5 +93,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 </style>
