@@ -1,6 +1,3 @@
-// Should be in the array that gets returned from the getStandingsApi call.
-// Will need to update the url in getTeams to pass it the leagueid payload.
-
 import Vue from "vue";
 import Vuex from "vuex";
 
