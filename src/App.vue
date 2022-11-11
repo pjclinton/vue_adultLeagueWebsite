@@ -21,13 +21,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;700&family=Inter+Tight&family=Overpass:wght@100;400;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight&family=Exo:wght@100;700&family=Overpass:wght@100;400;900&display=swap');
 #app {
   background: rgb(4,30,66);
-  background: linear-gradient(146deg, rgba(4,30,66,1) 0%, rgba(200,16,46,1) 100%);
+  background: linear-gradient(146deg, rgba(0, 32, 91, 1) 20%, rgba(191 ,13 ,62 ,1) 100%);
   color: #fff;
-  font-family: 'Overpass', sans-serif;
-
+  font-family: 'Inter Tight', sans-serif;
+  letter-spacing: .05em;
 }
 .fade-enter-active,
 .fade-leave-active {
