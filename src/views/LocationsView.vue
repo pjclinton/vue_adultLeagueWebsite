@@ -14,7 +14,7 @@
         <v-slide-item
           v-for="league in $store.state.leagues"
           :key="league.seasonleagueid"
-          v-slot="{ active, toggle }"
+          v-slot="{ active }"
         >
           <v-card
             :color="active ? 'secondary' : 'primary'"
@@ -22,7 +22,7 @@
             height="150"
             width="300"
             dark
-            @click="toggle, handleLeagueSel(league.seasonleagueid)"
+            @click="handleLeagueSel(league.seasonleagueid)"
   
           >
               <v-row
@@ -158,23 +158,3 @@
   background: transparent;
 }
 </style>
-
-{
-  "seasonleagueid": "32201",
-  "leaguename": "AA Fall/Winter 22-23",
-  "schedule": "Scheduled",
-  "startdate": "09/08/2022",
-  "enddate": "04/13/2023",
-  "sport": "Hockey",
-  "publish": 0,
-  "displayschedule": "2",
-  "displaystandings": "2",
-  "displaystats": "2",
-  "displayplayoffs": "2",
-  "displaysuspensions": "2",
-  "displayrules": "2",
-  "sportid": "1",
-  "tournament": "N",
-  "archive": "N",
-  "displayemail": null
-}
