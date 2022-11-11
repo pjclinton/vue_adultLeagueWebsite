@@ -25,7 +25,7 @@
     </v-data-table>
     </v-card-text>
     <v-card-actions>
-      <v-btn to="/" color="#C8102E">
+      <v-btn to="/" color="secondary">
         Back
       </v-btn>
     </v-card-actions>

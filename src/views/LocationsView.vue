@@ -8,7 +8,7 @@
       <v-slide-group
         dark
         v-model="model"
-        active-class="#C8102E"
+        active-class="secondary"
         show-arrows
       >
         <v-slide-item
@@ -17,7 +17,7 @@
           v-slot="{ active, toggle }"
         >
           <v-card
-            :color="active ? '#C8102E' : '#041E42'"
+            :color="active ? 'secondary' : 'primary'"
             class="ma-4 pa-4"
             height="150"
             width="300"
@@ -40,7 +40,7 @@
         </v-slide-item>
       </v-slide-group>
       <v-divider class="pt-3 pb-3" dark></v-divider>
-      <v-card dark color="#041E42" v-if="$store.state.selectedLeague">
+      <v-card dark color="primary" v-if="$store.state.selectedLeague">
       <v-card-title>
         {{ $store.state.selectedLeague.leaguename }}
       </v-card-title>
@@ -69,28 +69,28 @@
   
       <v-divider class="pt-5 pb-5" dark></v-divider>
   
-      <v-card dark color="#041E42" v-if="$store.state.selectedLeague">
-      <v-card-title>
-        Stats
-      </v-card-title>
-      <v-card-text>
-        <v-data-table
-          :headers="statsHeaders"
-          :items="$store.state.stats"
-          class="elevation-1 data-table"
-          :loading="$store.state.isStatsLoading"
-          loading-text="Loading... Please wait"
-          elevation="0"
-          color="transparent"
-        >
-        <template v-slot:[`item.teamid`]="{ item }">
-          <v-btn color="#254bc8" small @click="handleRosterSel(item.teamid)">
-            View Roster
-          </v-btn>
-        </template>
-      </v-data-table>
-      </v-card-text>
-    </v-card>
+      <v-card dark color="primary" v-if="$store.state.selectedLeague">
+        <v-card-title>
+          Stats
+        </v-card-title>
+        <v-card-text>
+          <v-data-table
+            :headers="statsHeaders"
+            :items="$store.state.stats"
+            class="elevation-1 data-table"
+            :loading="$store.state.isStatsLoading"
+            loading-text="Loading... Please wait"
+            elevation="0"
+            color="transparent"
+          >
+          <template v-slot:[`item.teamid`]="{ item }">
+            <v-btn color="#254bc8" small @click="handleRosterSel(item.teamid)">
+              View Roster
+            </v-btn>
+          </template>
+        </v-data-table>
+        </v-card-text>
+      </v-card>
     </div>
     <div class="container" v-else>
       Coming Soon!
