@@ -42,7 +42,7 @@
         class="d-md-none"
       ></v-app-bar-nav-icon>
       <v-toolbar-title
-        ><span class="logo-title">Beer League Heroes</span></v-toolbar-title
+        ><span class="logo-title">Austin Hockey Connection</span></v-toolbar-title
       >
 
       <v-spacer> </v-spacer>
