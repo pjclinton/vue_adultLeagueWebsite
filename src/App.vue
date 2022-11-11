@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <app-bar />
+    <nav-bar />
     <v-main>
       <Transition name="fade" mode="out-in">
         <router-view />
@@ -10,18 +10,12 @@
 </template>
 
 <script>
-import AppBar from "@/components/AppBar.vue";
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: "App",
   components: {
-    AppBar,
-  },
-
-  data: () => ({
-  }),
-  async created() {
-    this.$store.dispatch("getLeagues");
+    NavBar,
   },
 };
 </script>
@@ -29,15 +23,11 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;700&family=Inter+Tight&family=Overpass:wght@100;400;900&display=swap");
 #app {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    146deg,
-    rgba(0, 32, 91, 1) 40%,
-    rgba(191, 13, 62, 1) 100%
-  );
+  background: rgb(4,30,66);
+  background: linear-gradient(146deg, rgba(4,30,66,1) 0%, rgba(200,16,46,1) 100%);
   color: #fff;
-  font-family: "Inter Tight", sans-serif;
-  letter-spacing: .05em;
+  font-family: 'Overpass', sans-serif;
+
 }
 .fade-enter-active,
 .fade-leave-active {

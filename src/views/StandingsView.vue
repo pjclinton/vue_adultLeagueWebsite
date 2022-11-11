@@ -49,9 +49,14 @@
           {{ item.rank }}
         </v-chip>
       </template>
-        </v-data-table>
-      </v-card-text>
-    </v-card>
+    </v-data-table>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn to="/" color="secondary">
+        Back
+      </v-btn>
+    </v-card-actions>
+  </v-card>
   </div>
 </template>
 

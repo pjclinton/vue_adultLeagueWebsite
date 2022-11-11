@@ -33,9 +33,9 @@ const routes = [
     component: () => import("../views/EventsView.vue"),
   },
   {
-    path: "/stats",
-    name: "stats",
-    component: () => import("../views/StatsView.vue"),
+    path: "/locations/:id",
+    name: "locations",
+    component: () => import("../views/LocationsView.vue"),
   },
 ];
 

@@ -34,15 +34,19 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="#041E42" flat dark hide-on-scroll>
-      <div
-        :class="drawer ? 'puck' : 'puckActive'"
-        @click.stop="drawer = !drawer"
-      ></div>
-      <router-link to="/">
-        <div class="logo xblack">Beer League Heroes</div>
-      </router-link>
-    </v-app-bar>
+      <v-app-bar
+
+        app
+        color="primary"
+        flat
+        dark
+        hide-on-scroll
+      >
+        <div :class="drawer ? 'puck' : 'puckActive'" @click.stop="drawer = !drawer"></div>
+        <router-link to="/">
+          <div class="logo xblack">Beer League Heroes</div>
+        </router-link>
+      </v-app-bar>
   </div>
 </template>
 
