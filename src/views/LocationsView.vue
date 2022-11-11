@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container" v-if="$store.state.leagues.length > 0">
-      <h1>
+      <h1 class="pt-4">
         {{ locationName }}
       </h1>
-      <div class="title">Select League</div>
+      <div class="title pb-4">Select League</div>
       <v-slide-group
         dark
         v-model="model"
