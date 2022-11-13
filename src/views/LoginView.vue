@@ -1,15 +1,9 @@
 <template>
-    <div>
-        Login View
-    </div>
+  <div>Login View</div>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

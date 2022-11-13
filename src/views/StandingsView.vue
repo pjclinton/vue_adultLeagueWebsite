@@ -44,19 +44,17 @@
           loading-text="Loading... Please wait"
           elevation="0"
         >
-        <template v-slot:[`item.rank`]="{ item }">
-        <v-chip color="blue">
-          {{ item.rank }}
-        </v-chip>
-      </template>
-    </v-data-table>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn to="/" color="secondary">
-        Back
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+          <template v-slot:[`item.rank`]="{ item }">
+            <v-chip color="blue">
+              {{ item.rank }}
+            </v-chip>
+          </template>
+        </v-data-table>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn to="/" color="secondary"> Back </v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
@@ -65,29 +63,29 @@ export default {
   data() {
     return {
       standingHeaders: [
-        { text: "Team Name", value: "teamname"},
-        { text: "Points", value: "points"},
-        { text: "Wins", value: "totalwins"},
-        { text: "Losses", value: "losses"},
-        { text: "OT Losses", value: "otl"},
-        { text: "Ties", value: "ties"},
-        { text: "Last Five", value: "lastfive"},
-        { text: "", value: "teamid"},
+        { text: "Team Name", value: "teamname" },
+        { text: "Points", value: "points" },
+        { text: "Wins", value: "totalwins" },
+        { text: "Losses", value: "losses" },
+        { text: "OT Losses", value: "otl" },
+        { text: "Ties", value: "ties" },
+        { text: "Last Five", value: "lastfive" },
+        { text: "", value: "teamid" },
       ],
       statsHeaders: [
-        { text: "Rank", value: "rank"},
-        { text: "Name", value: "name"},
-        { text: "Team", value: "teamabbr"},
-        { text: "Number", value: "number"},
-        { text: "Position", value: "position"},
-        { text: "GP", value: "gp"},
-        { text: "Goals", value: "goals"},
-        { text: "Assists", value: "assists"},
-        { text: "Points", value: "points"},
-        { text: "PPG", value: "ppgoals"},
-        { text: "SHG", value: "shgoals"},
-        { text: "PIMs", value: "pim"},
-        { text: "Pts/G", value: "ppg"},
+        { text: "Rank", value: "rank" },
+        { text: "Name", value: "name" },
+        { text: "Team", value: "teamabbr" },
+        { text: "Number", value: "number" },
+        { text: "Position", value: "position" },
+        { text: "GP", value: "gp" },
+        { text: "Goals", value: "goals" },
+        { text: "Assists", value: "assists" },
+        { text: "Points", value: "points" },
+        { text: "PPG", value: "ppgoals" },
+        { text: "SHG", value: "shgoals" },
+        { text: "PIMs", value: "pim" },
+        { text: "Pts/G", value: "ppg" },
       ],
     };
   },

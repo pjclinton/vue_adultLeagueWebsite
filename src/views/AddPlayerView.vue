@@ -9,10 +9,7 @@
         <v-form ref="form" v-model="valid">
           <v-container>
             <v-row>
-              <v-col
-                cols="12"
-                md="4"
-              >
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="firstname"
                   :rules="nameRules"
@@ -21,11 +18,8 @@
                   required
                 ></v-text-field>
               </v-col>
-      
-              <v-col
-                cols="12"
-                md="4"
-              >
+
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="lastname"
                   :rules="nameRules"
@@ -34,11 +28,8 @@
                   required
                 ></v-text-field>
               </v-col>
-      
-              <v-col
-                cols="12"
-                md="4"
-              >
+
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="email"
                   :rules="emailRules"
@@ -46,64 +37,45 @@
                   required
                 ></v-text-field>
               </v-col>
-      
-              <v-col
-                cols="12"
-                md="4"
-              >
+
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="phone"
                   label="Phone"
                   required
                 ></v-text-field>
               </v-col>
-              
-      
-              <v-col
-                cols="12"
-                md="4"
-              >
+
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="position"
                   label="Position"
                   required
                 ></v-text-field>
               </v-col>
-              
-              <v-col
-                cols="12"
-                md="4"
-              >
+
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="notes"
                   label="Notes"
                   required
                 ></v-text-field>
               </v-col>
-              <v-col
-                cols="12"
-                md="4"
-              >
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="jersey"
                   label="Jersey"
                   required
                 ></v-text-field>
               </v-col>
-              <v-col
-                cols="12"
-                md="4"
-              >
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="dues"
                   label="Dues"
                   required
                 ></v-text-field>
               </v-col>
-              <v-col
-                cols="12"
-                md="4"
-              >
+              <v-col cols="12" md="4">
                 <v-text-field
                   v-model="number"
                   label="Number"
@@ -116,12 +88,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn
-          @click="submit()"
-          color="primary"
-          block
-          :disabled="!valid"
-        >
+        <v-btn @click="submit()" color="primary" block :disabled="!valid">
           Submit
         </v-btn>
       </v-card-actions>
@@ -130,48 +97,48 @@
 </template>
 
 <script>
-  export default {
-    emits: ['onFormSubmit'],
-    data: () => ({
-      valid: false,
-      firstname: '',
-      lastname: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => v.length <= 10 || 'Name must be less than 10 characters',
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid',
-      ],
-      phone: '',
-      position: '',
-      notes: '',
-      jersey: '',
-      dues: '',
-      number: '',
-      formData: null,
-    }),
-    methods: {
-      submit() {
-        const formData = {
-          firstname: this.firstname,
-          lastname: this.lastname,
-          email: this.email,
-          phone: this.phone,
-          position: this.position,
-          notes: this.notes,
-          jersey: this.jersey,
-          dues: this.dues,
-          number: this.number
-        }
+export default {
+  emits: ["onFormSubmit"],
+  data: () => ({
+    valid: false,
+    firstname: "",
+    lastname: "",
+    nameRules: [
+      (v) => !!v || "Name is required",
+      (v) => v.length <= 10 || "Name must be less than 10 characters",
+    ],
+    email: "",
+    emailRules: [
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+/.test(v) || "E-mail must be valid",
+    ],
+    phone: "",
+    position: "",
+    notes: "",
+    jersey: "",
+    dues: "",
+    number: "",
+    formData: null,
+  }),
+  methods: {
+    submit() {
+      const formData = {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email,
+        phone: this.phone,
+        position: this.position,
+        notes: this.notes,
+        jersey: this.jersey,
+        dues: this.dues,
+        number: this.number,
+      };
 
-        this.$store.dispatch('addPlayer', formData);
-        this.$router.push('/roster')
-      }
+      this.$store.dispatch("addPlayer", formData);
+      this.$router.push("/roster");
     },
-  }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
