@@ -106,13 +106,6 @@ a {
   text-decoration: none;
   color: inherit !important;
 }
-
-.nav-items {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 80vh;
-}
 .v-list-item__subtitle {
   white-space: normal !important;
 }
