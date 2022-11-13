@@ -103,14 +103,19 @@
     data() {
       return {
         teamHeaders: [
-        { text: 'Team Name', value: 'teamname', width: '150px' },
-        { text: 'Points', value: 'points', width: '100px' },
-        { text: 'Wins', value: 'totalwins', width: '100px' },
-        { text: 'Losses', value: 'losses', width: '100px' },
-        { text: 'OT Losses', value: 'otl', width: '115px' },
-        { text: 'Ties', value: 'ties', width: '100px'},
-        { text: 'Last Five', value: 'lastfive', width: '115px'},
-        // { text: '', value: 'teamid', width: '100px'},
+        { text: 'Rank', value: 'rank', width: '' },
+        { text: 'Team', value: 'teamname', width: '' },
+        { text: 'GP', value: 'gp', width: '' },
+        { text: 'W', value: 'totalwins', width: '' },
+        { text: 'L', value: 'totallosses', width: '' },
+        { text: 'OT', value: 'owins', width: '' },
+        { text: 'PTS', value: 'points', width: '' },
+        { text: 'GF', value: 'gf', width: ''},
+        { text: 'GA', value: 'ga', width: ''},
+        { text: 'Diff', value: 'diff', width: '' },
+        { text: 'Last Five', value: 'lastfive', width: '' },
+        { text: 'Streak', value: 'streak', width: '' },
+        // { text: '', value: 'teamid', width: ''},
         ],
         statsHeaders: [
         { text: "Rank", value: "rank"},
@@ -139,7 +144,7 @@
     computed: {
       locationName() {
         return this.$route.params.id === 'crossover' ? 'The Crossover' : 'Coming Soon!'
-      }
+      },
     },
     watch: {
       '$route.params.id': {

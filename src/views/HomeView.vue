@@ -1,52 +1,47 @@
 <template>
   <div class="container">
     <div class="text">
-      <div class="location thin">
-        Austin, Texas - Adult League Hockey
-      </div>
+      <div class="location thin">Austin, Texas - Adult League Hockey</div>
       <div class="team-name">Beer League Heroes</div>
-      <p class="pt-6">View standings and rosters for Austin area Adult Hockey leagues.</p>
-        <v-btn
-          color="#254bc8"
-          dark
-          v-bind="attrs"
-          v-on="on"
-          large
-          to="/locations/crossover"
-        >
+      <p class="pt-6">
+        View standings and rosters for Austin area Adult Hockey leagues.
+      </p>
+      <v-btn
+        color="#254bc8"
+        dark
+        v-bind="attrs"
+        v-on="on"
+        large
+        to="/locations/crossover"
+      >
         View Crossover Leagues
-        </v-btn>
+      </v-btn>
     </div>
     <div class="d-none d-md-block">
-      <v-img class="image"
-        src="../assets/greatone.svg"
-        width="300px">
-      </v-img>
+      <v-img class="image" src="../assets/greatone.svg" width="300px"> </v-img>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-    name: 'HomeView',
-    data: () => ({
-      items: [
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-      ],
-    }),
-    methods: {
-      handleLeagueSel(leagueid) {
-        this.$store.dispatch('getTeams', leagueid);
-        this.$store.dispatch('getStats', leagueid)
-        this.$router.push('/standings');
-      }
-    }
-  }
-
+  name: "HomeView",
+  data: () => ({
+    items: [
+      { title: "Click Me" },
+      { title: "Click Me" },
+      { title: "Click Me" },
+      { title: "Click Me" },
+    ],
+  }),
+  methods: {
+    handleLeagueSel(leagueid) {
+      this.$store.dispatch("getTeams", leagueid);
+      this.$store.dispatch("getStats", leagueid);
+      this.$router.push("/standings");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -62,14 +57,13 @@ export default {
     font-size: 18px;
   }
   .team-name {
-    font-family: 'Exo', sans-serif;
+    font-family: "Exo", sans-serif;
     font-weight: 900;
     font-size: 4rem;
     line-height: 80px;
   }
   .image {
-    opacity: .85;
+    opacity: 0.85;
   }
 }
-
 </style>
