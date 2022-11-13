@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="heading">
-      <h1>Pick Up Hockey Events</h1>
-      <h2>Select Rink</h2>
+      <div class="xblack">Pick Up Hockey Events</div>
+      <div class="thin">Select Rink</div>
     </div>
 
     <v-item-group>
@@ -11,10 +11,10 @@
           <v-col cols="12" md="6">
             <v-item v-slot="{ toggle }">
               <v-card
-                :color="location === 'chap' ? 'primary' : ''"
+                :color="location === 'chap' ? 'primary' : 'secondary'"
                 class="d-flex align-center"
-                dark
-                height="200"
+                :dark="location === 'chap'"
+                height="150"
                 @click="toggle, handleClick('chap')"
               >
                 <v-scroll-y-transition>
@@ -28,10 +28,10 @@
           <v-col cols="12" md="6">
             <v-item v-slot="{ toggle }">
               <v-card
-                :color="location === 'pond' ? 'primary' : ''"
+                :color="location === 'pond' ? 'primary' : 'secondary'"
                 class="d-flex align-center"
-                dark
-                height="200"
+                :dark="location === 'pond'"
+                height="150"
                 @click="toggle, handleClick('pond')"
               >
                 <v-scroll-y-transition>
@@ -89,7 +89,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding: 4rem;
+  padding: 4rem 4rem 0rem 4rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

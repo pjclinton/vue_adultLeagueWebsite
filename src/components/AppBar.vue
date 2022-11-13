@@ -120,10 +120,7 @@ a {
 }
 
 // overrides
-.v-list-item__title,
-.v-list-item__subtitle {
-  padding-top: 10px;
-  padding-bottom: 6px;
-  white-space: unset;
+.v-list-item__title, .v-list-item__subtitle {
+  white-space: normal;
 }
 </style>
