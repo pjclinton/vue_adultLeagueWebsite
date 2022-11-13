@@ -4,7 +4,7 @@
       <div class="location thin">
         Austin, Texas - Adult League Hockey
       </div>
-      <div class="team-name">Beer League Heroes</div>
+      <div class="team-name xblack">Beer League Heroes</div>
       <p class="pt-6">View standings and rosters for Austin area Adult Hockey leagues.</p>
         <v-btn
           color="#254bc8"
@@ -56,16 +56,15 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 3rem 4rem;
+  max-height: 600px;
 
   .location {
     text-transform: uppercase;
     font-size: 18px;
   }
   .team-name {
-    font-family: 'Exo', sans-serif;
-    font-weight: 900;
     font-size: 4rem;
-    line-height: 80px;
+    line-height: 60px;
   }
   .image {
     opacity: .85;

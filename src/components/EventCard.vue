@@ -1,5 +1,5 @@
 <template>
-    <v-card class="card" dark color="#1e1e1e87">
+    <v-card class="card" dark color="primary">
       <v-card-title>
         {{ title }}
       </v-card-title>
@@ -35,6 +35,6 @@
 
 <style lang="scss" scoped>
 .card {
-  width: 500px;
+  max-width: 500px;
 }
 </style>

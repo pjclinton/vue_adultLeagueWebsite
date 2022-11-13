@@ -1,12 +1,9 @@
 <template>
   <div>
     <div class="container" v-if="$store.state.leagues.length > 0">
-      <h1 class="pt-4">
-        {{ locationName }}
-      </h1>
-      <div class="title pb-4">Select League</div>
+      <div class="thin mt-4 pb-4">Select League</div>
+      <v-divider></v-divider>
       <v-slide-group
-        dark
         v-model="model"
         active-class="secondary"
         show-arrows
@@ -19,8 +16,8 @@
           <v-card
             :color="active ? 'secondary' : 'primary'"
             class="ma-4 pa-4"
-            height="150"
-            width="300"
+            height="100"
+            max-width="350"
             dark
             @click="handleLeagueSel(league.seasonleagueid)"
   
@@ -39,8 +36,10 @@
           </v-card>
         </v-slide-item>
       </v-slide-group>
-      <v-divider class="pt-3 pb-3" dark></v-divider>
-      <v-card dark color="primary" v-if="$store.state.selectedLeague">
+      <v-divider class="pt-3 pb-3"></v-divider>
+
+
+      <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.selectedLeague">
       <v-card-title>
         {{ $store.state.selectedLeague.leaguename }}
       </v-card-title>
@@ -67,9 +66,7 @@
       </v-card-text>
       </v-card>
   
-      <v-divider class="pt-5 pb-5" dark></v-divider>
-  
-      <v-card dark color="primary" v-if="$store.state.selectedLeague">
+      <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.selectedLeague">
         <v-card-title>
           Stats
         </v-card-title>
