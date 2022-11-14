@@ -4,6 +4,7 @@
       <v-list-item>
         <v-list-item-content>
           <!-- <v-img contain height="50px" src="logoIcon.svg" class="mb-2"></v-img> -->
+<<<<<<< HEAD
           <v-list-item-title class="xblack pb-3" style="font-size: 18px">
             Austin Hockey Connection
           </v-list-item-title>
@@ -11,6 +12,15 @@
             "{{ quote.quote }}" <br>
             <br>
             <span class="thin">- {{quote.author}}</span>
+=======
+          <v-list-item-title class="text-h6">
+            Beer League Heroes<br /><br />
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            "{{ quote.quote }}" <br />
+            <br />
+            <span class="thin">- {{ quote.author }}</span>
+>>>>>>> origin/development
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -51,12 +61,12 @@
         @click="drawer = !drawer"
         class="d-md-none"
       ></v-app-bar-nav-icon>
-      
-        <v-toolbar-title
-          ><router-link to="/"><span class="logo-title">Austin Hockey Connection</span>
-            </router-link>
-          </v-toolbar-title> 
-     
+
+      <v-toolbar-title
+        ><router-link to="/"
+          ><span class="logo-title">Beer League Heroes</span>
+        </router-link>
+      </v-toolbar-title>
 
       <v-spacer> </v-spacer>
 
@@ -65,14 +75,20 @@
         v-for="item in items"
         :key="item.title"
       >
-        <v-btn class="ml-1 mr-1" :disabled="item.disabled" text :to="item.link">{{ item.title }}</v-btn>
+        <v-btn
+          class="ml-1 mr-1"
+          :disabled="item.disabled"
+          text
+          :to="item.link"
+          >{{ item.title }}</v-btn
+        >
       </div>
     </v-app-bar>
   </div>
 </template>
 
 <script>
-import { quotes } from '../assets/hockey-quotes'
+import { quotes } from "../assets/hockey-quotes";
 
 export default {
   data: () => ({
@@ -89,9 +105,9 @@ export default {
       return true;
     },
     quote() {
-        const num = Math.floor(Math.random() * quotes.length + 0);
-        return quotes[num];
-      }
+      const num = Math.floor(Math.random() * quotes.length + 0);
+      return quotes[num];
+    },
   },
   methods: {
     // logout() {
