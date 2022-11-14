@@ -42,6 +42,15 @@
               </v-list-item-content>
             </v-list-item>
           </div>
+          <div class="logout">
+            <v-list-item
+              @click="logout()"
+            >
+              <v-list-item-content>
+                <v-list-item-title>Logout</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </div>
         </div>
       </v-list>
     </v-navigation-drawer>
@@ -79,6 +88,8 @@
 
 <script>
 import { quotes } from "../assets/hockey-quotes";
+import { signOut } from "firebase/auth";
+import { auth } from '../plugins/firebase'
 
 export default {
   data: () => ({
@@ -88,6 +99,7 @@ export default {
       { title: "Crossover", link: "/locations/crossover", disabled: false },
       { title: "The Pond", link: "/locations/pond", disabled: true },
       { title: "Events", link: "/events", disabled: false },
+      { title: "Admin", link: "/admin", disabled: false },
     ],
   }),
   computed: {
@@ -100,9 +112,9 @@ export default {
     },
   },
   methods: {
-    // logout() {
-    //   this.$store.dispatch("logout");
-    // },
+    logout() {
+      signOut(auth).then(() => console.log('logged out'))
+    },
   },
 };
 </script>
