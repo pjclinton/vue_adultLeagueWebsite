@@ -1,5 +1,3 @@
-![Logo]()
-
 # Hockey stats page and more!
 
 This app/website is in development for use by the hockey leagues in Austin, Tx.
