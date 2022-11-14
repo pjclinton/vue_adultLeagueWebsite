@@ -4,7 +4,6 @@
       <v-list-item>
         <v-list-item-content>
           <!-- <v-img contain height="50px" src="logoIcon.svg" class="mb-2"></v-img> -->
-<<<<<<< HEAD
           <v-list-item-title class="xblack pb-3" style="font-size: 18px">
             Austin Hockey Connection
           </v-list-item-title>
@@ -12,15 +11,6 @@
             "{{ quote.quote }}" <br>
             <br>
             <span class="thin">- {{quote.author}}</span>
-=======
-          <v-list-item-title class="text-h6">
-            Beer League Heroes<br /><br />
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            "{{ quote.quote }}" <br />
-            <br />
-            <span class="thin">- {{ quote.author }}</span>
->>>>>>> origin/development
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
