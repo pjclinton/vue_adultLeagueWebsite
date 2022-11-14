@@ -1,4 +1,22 @@
 <template>
+<<<<<<< HEAD
+    <v-card class="card" dark color="primary">
+      <v-card-title>
+        {{ title }}
+      </v-card-title>
+      <v-card-subtitle>
+        {{ hockeyEvent.startDate }}
+      </v-card-subtitle>
+      <v-card-text>
+        {{ description }}
+      </v-card-text>
+      <v-card-actions>
+        <v-btn :href="hockeyEvent.url" target="_blank" color="accent">
+          Register
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+=======
   <v-card class="card" dark color="#1e1e1e87">
     <v-card-title>
       {{ title }}
@@ -15,6 +33,7 @@
       </v-btn>
     </v-card-actions>
   </v-card>
+>>>>>>> origin/development
 </template>
 
 <script>
@@ -38,6 +57,6 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  width: 500px;
+  max-width: 500px;
 }
 </style>
