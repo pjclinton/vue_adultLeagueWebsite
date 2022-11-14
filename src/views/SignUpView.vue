@@ -58,7 +58,7 @@
 
                         <v-col cols="12" md="4">
                         <v-text-field
-                          v-model="skill"
+                          v-model="league"
                           label="Skill Level"
                           required
                         ></v-text-field>
@@ -118,38 +118,32 @@ export default {
       number: "",
       password: '',
       verifyPassword: '',
-      skill: ''
+      league: ''
     }
   },
   methods: {
     async signUp() {
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, this.email, this.password)
-        .then((userCredential) => {
-          const { uid } = userCredential.user;
-          console.log(uid)
-          return uid
+      const loginCreds = {
+        email: this.email,
+        password: this.password
+      }
+      const profile = {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        username: this.username,
+        email: this.email,
+        phone: this.phone,
+        position: this.position,
+        number: this.number,
+        league: this.league
+      }
+      await this.$store.dispatch('firebaseSignup', loginCreds)
+        .then(() => {
+          this.store.dispatch('saveUserProfile', profile)
         })
-        .then(async (uid) => {
-          const skater = {
-            uid: uid,
-            firstname: this.firstname,
-            lastname: this.lastname,
-            username: this.username,
-            email: this.email,
-            phone: this.phone,
-            position: this.position,
-            number: this.number,
-            skill: this.skill
-          }
-
-          try {
-            await setDoc(doc(db, "skaters", uid), skater)
-              .then(() => console.log('successfully added document'))
-          } catch (error) {
-            console.log(error)
-          }
-        }).catch(err => console.log(err))
+        .then(() => {
+          this.store.dispatch('getUserProfile')
+        })
     }
   }
 };

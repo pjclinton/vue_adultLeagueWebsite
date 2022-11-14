@@ -31,9 +31,6 @@
 </template>
 
 <script>
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../plugins/firebase'
-
 export default {
     data() {
         return {
@@ -42,17 +39,15 @@ export default {
         }
     },
     methods: {
-        login() {
-            signInWithEmailAndPassword(auth, this.email, this.password)
-                .then((userCredential) => {
-                    // Signed in 
-                    this.$store.state.user = userCredential.user;
-                    console.log("Signed in as ", userCredential.user.email)
+        async login() {
+            const loginCreds = {
+                email: this.email,
+                password: this.password
+            }
+            await this.$store.dispatch("firebaseLogin", loginCreds)
+                .then(() => {
+                    this.$store.dispatch("getUserProfile")
                 })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                });
 
         }
     }

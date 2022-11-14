@@ -32,6 +32,15 @@
               </v-list-item-content>
             </v-list-item>
           </div>
+          <div class="profile">
+            <v-list-item
+              to="/profile"
+            >
+              <v-list-item-content>
+                <v-list-item-title>Profile</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            </div>
           <div class="login">
             <v-list-item
               to="/login"
