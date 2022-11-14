@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="text">
-<<<<<<< HEAD
       <div class="location thin">
         Austin, Texas - Adult League Hockey
       </div>
@@ -15,21 +14,6 @@
           large
           to="/locations/crossover"
         >
-=======
-      <div class="location thin">Austin, Texas - Adult League Hockey</div>
-      <div class="team-name">Beer League Heroes</div>
-      <p class="pt-6">
-        View standings and rosters for Austin area Adult Hockey leagues.
-      </p>
-      <v-btn
-        color="#254bc8"
-        dark
-        v-bind="attrs"
-        v-on="on"
-        large
-        to="/locations/crossover"
-      >
->>>>>>> origin/development
         View Crossover Leagues
       </v-btn>
     </div>
@@ -74,11 +58,6 @@ export default {
     font-size: 18px;
   }
   .team-name {
-<<<<<<< HEAD
-=======
-    font-family: "Exo", sans-serif;
-    font-weight: 900;
->>>>>>> origin/development
     font-size: 4rem;
     line-height: 60px;
   }
