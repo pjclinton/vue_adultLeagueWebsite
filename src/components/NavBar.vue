@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav-container">
     <v-navigation-drawer v-model="drawer" app temporary color="secondary">
       <v-list-item>
         <v-list-item-content>
@@ -46,7 +46,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar color="transparent" elevation="0">
+    <v-app-bar color="transparent" elevation="0" class="app-bar">
       <v-app-bar-nav-icon
         @click="drawer = !drawer"
         class="d-md-none"
@@ -108,5 +108,12 @@ a {
 }
 .v-list-item__subtitle {
   white-space: normal !important;
+}
+.app-bar {
+  max-width: 1000px;
+}
+.nav-container {
+  display: flex;
+  justify-content: center;
 }
 </style>

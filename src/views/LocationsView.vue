@@ -38,7 +38,7 @@
       </v-slide-group>
       <v-divider class="pt-3 pb-3"></v-divider>
 
-
+      <div v-if="$store.state.selectedLeague" class="thin mt-4 pb-4">Standings</div>
       <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.selectedLeague">
       <v-card-title>
         {{ $store.state.selectedLeague.leaguename }}
@@ -66,10 +66,8 @@
       </v-card-text>
       </v-card>
   
+      <div v-if="$store.state.selectedLeague" class="thin mt-4 pb-4">Stats</div>
       <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.selectedLeague">
-        <v-card-title>
-          Stats
-        </v-card-title>
         <v-card-text>
           <v-data-table
             :headers="statsHeaders"
