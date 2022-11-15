@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 
 const config = {
   apiKey: process.env.VUE_APP_API_KEY,
@@ -12,6 +13,7 @@ const config = {
 };
 
 const app = initializeApp(config);
+getAnalytics(app);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
