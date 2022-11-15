@@ -122,12 +122,10 @@ export default {
     }
   },
   methods: {
-    async signUp() {
+    signUp() {
       const loginCreds = {
         email: this.email,
-        password: this.password
-      }
-      const profile = {
+        password: this.password,
         firstname: this.firstname,
         lastname: this.lastname,
         username: this.username,
@@ -137,13 +135,7 @@ export default {
         number: this.number,
         league: this.league
       }
-      await this.$store.dispatch('firebaseSignup', loginCreds)
-        .then(() => {
-          this.store.dispatch('saveUserProfile', profile)
-        })
-        .then(() => {
-          this.store.dispatch('getUserProfile')
-        })
+      this.$store.dispatch('firebaseSignup', loginCreds)
     }
   }
 };

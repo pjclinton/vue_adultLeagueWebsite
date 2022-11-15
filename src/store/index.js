@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../plugins/firebase";
 import {
   signInWithEmailAndPassword,
@@ -55,6 +55,21 @@ export default new Vuex.Store({
         loginCreds.password
       ).then((userCredential) => {
         state.user = userCredential.user;
+        const profile = {
+          firstname: loginCreds.firstname,
+          lastname: loginCreds.lastname,
+          username: loginCreds.username,
+          email: loginCreds.email,
+          phone: loginCreds.phone,
+          position: loginCreds.position,
+          number: loginCreds.number,
+          league: loginCreds.league
+        }
+        return profile;
+      }).then((profile) => {
+        console.log({profile})
+        this.dispatch('saveUserProfile', profile);
+        router.push("/");
       });
     },
     FIREBASE_LOGIN(state, loginCreds) {
@@ -245,8 +260,8 @@ export default new Vuex.Store({
     getUserProfile({ commit }) {
       commit("GET_USER_PROFILE");
     },
-    saveUserProfile({ commit }, payload) {
-      commit("SET_USER_PROFILE", payload);
+    saveUserProfile({ commit }, profile) {
+      commit("SAVE_USER_PROFILE", profile);
     },
     firebaseSignup({ commit }, loginCreds) {
       commit("FIREBASE_SIGNUP", loginCreds);
