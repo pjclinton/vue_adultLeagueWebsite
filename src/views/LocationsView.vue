@@ -4,10 +4,6 @@
       <div class="thin mt-4 pb-4">Select League</div>
       <v-divider></v-divider>
       <v-slide-group
-<<<<<<< HEAD
-=======
-        v-model="model"
->>>>>>> origin/development
         active-class="secondary"
         show-arrows
       >
