@@ -1,14 +1,21 @@
 <template>
-  <div v-if="$store.state.userProfile">
-    <v-card>
+  <div class="profile-container mt-10" v-if="$store.state.userProfile">
+    <v-card color="primary" dark max-width="800px">
       <v-card-title>
-        {{ $store.state.userProfile.email }}
+        User Profile
       </v-card-title>
       <v-card-subtitle>
-
+        
       </v-card-subtitle>
       <v-card-text>
-
+        <v-container>
+          <v-row>
+            <v-col>
+              username: <br>
+              {{ $store.state.userProfile.username }}
+            </v-col>
+          </v-row>
+        </v-container>
       </v-card-text>
       <v-card-actions>
         <v-btn color="secondary">Edit</v-btn>
@@ -29,5 +36,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+.profile-container {
+  display: flex;
+  justify-content: center;
+}
 </style>
