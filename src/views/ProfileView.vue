@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="$store.state.userProfile">
     <v-card>
       <v-card-title>
         {{ $store.state.userProfile.email }}
@@ -20,7 +20,11 @@
 
 <script>
   export default {
-    
+    created() {
+      if (!this.$store.state.userProfile) {
+        this.$store.dispatch("getUserProfile")
+      }
+    }
   }
 </script>
 

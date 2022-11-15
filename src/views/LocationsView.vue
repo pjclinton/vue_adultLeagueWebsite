@@ -87,9 +87,6 @@
         </v-card-text>
       </v-card>
     </div>
-    <div class="container" v-else>
-      Coming Soon!
-    </div>
   </div>
 </template>
 

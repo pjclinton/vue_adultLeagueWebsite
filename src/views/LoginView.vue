@@ -22,7 +22,7 @@
                     </v-card-text>
                     <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn elevation="0" color="secondary" dark="false" @click="login()"> <span style="color:#333;"></span> Login</v-btn>
+                    <v-btn elevation="0" color="secondary" @click="login()"> <span style="color:#333;"></span> Login</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -39,16 +39,12 @@ export default {
         }
     },
     methods: {
-        async login() {
+        login() {
             const loginCreds = {
                 email: this.email,
                 password: this.password
             }
-            await this.$store.dispatch("firebaseLogin", loginCreds)
-                .then(() => {
-                    this.$store.dispatch("getUserProfile")
-                })
-
+            this.$store.dispatch("firebaseLogin", loginCreds)
         }
     }
 };
