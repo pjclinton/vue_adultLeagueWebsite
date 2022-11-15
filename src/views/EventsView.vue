@@ -46,18 +46,18 @@
 
     <div
       class="container"
-      v-if="$store.state.chapEvents.length > 0 && location === 'chap'"
+      v-if="$store.state.events.chapEvents.length > 0 && location === 'chap'"
     >
       <div
         class="events"
-        v-for="event in $store.state.chapEvents"
+        v-for="event in $store.state.events.chapEvents"
         :key="event.id"
       >
         <event-card :hockeyEvent="event"> </event-card>
       </div>
     </div>
     <div class="container" v-if="location === 'pond'">
-      <div v-for="(event, index) in $store.state.pondEvents" :key="index">
+      <div v-for="(event, index) in $store.state.events.pondEvents" :key="index">
         <event-card :hockeyEvent="event"> </event-card>
       </div>
     </div>
@@ -76,10 +76,10 @@ export default {
     };
   },
   created() {
-    if (!this.$store.state.chapEvents) {
+    if (!this.$store.state.events.chapEvents) {
       this.$store.dispatch("getChapSkates");
     }
-    if (!this.$store.state.pondEvents) {
+    if (!this.$store.state.events.pondEvents) {
       this.$store.dispatch("getPondSkates");
     }
   },

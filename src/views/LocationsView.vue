@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" v-if="$store.state.leagues.length > 0">
+    <div class="container" v-if="$store.state.crossover.leagues.length > 0">
       <div class="thin mt-4 pb-4">Select League</div>
       <v-divider></v-divider>
       <v-slide-group
@@ -8,7 +8,7 @@
         show-arrows
       >
         <v-slide-item
-          v-for="league in $store.state.leagues"
+          v-for="league in $store.state.crossover.leagues"
           :key="league.seasonleagueid"
           v-slot="{ active }"
         >
@@ -37,20 +37,20 @@
       </v-slide-group>
       <v-divider class="pt-3 pb-3"></v-divider>
 
-      <div v-if="$store.state.selectedLeague" class="thin mt-4 pb-4">Standings</div>
-      <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.selectedLeague">
+      <div v-if="$store.state.crossover.selectedLeague" class="thin mt-4 pb-4">Standings</div>
+      <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.crossover.selectedLeague">
       <v-card-title>
-        {{ $store.state.selectedLeague.leaguename }}
+        {{ $store.state.crossover.selectedLeague.leaguename }}
       </v-card-title>
       <v-card-subtitle>
-        {{$store.state.selectedLeague.startdate}} - {{$store.state.selectedLeague.enddate}}
+        {{$store.state.crossover.selectedLeague.startdate}} - {{$store.state.crossover.selectedLeague.enddate}}
       </v-card-subtitle>
       <v-card-text>
         <v-data-table
           :headers="teamHeaders"
-          :items="$store.state.teams"
+          :items="$store.state.crossover.teams"
           class="elevation-1 data-table"
-          :loading="$store.state.isLoading"
+          :loading="$store.state.crossover.isLoading"
           loading-text="Loading... Please wait"
           :hide-default-footer="true"
           elevation="0"
@@ -65,14 +65,14 @@
       </v-card-text>
       </v-card>
   
-      <div v-if="$store.state.selectedLeague" class="thin mt-4 pb-4">Stats</div>
-      <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.selectedLeague">
+      <div v-if="$store.state.crossover.selectedLeague" class="thin mt-4 pb-4">Stats</div>
+      <v-card class="mx-4 mb-6" dark color="primary" v-if="$store.state.crossover.selectedLeague">
         <v-card-text>
           <v-data-table
             :headers="statsHeaders"
-            :items="$store.state.stats"
+            :items="$store.state.crossover.stats"
             class="elevation-1 data-table"
-            :loading="$store.state.isStatsLoading"
+            :loading="$store.state.crossover.isStatsLoading"
             loading-text="Loading... Please wait"
             elevation="0"
             color="transparent"
