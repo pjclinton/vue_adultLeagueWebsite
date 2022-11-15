@@ -1,10 +1,18 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { doc, getDoc } from "firebase/firestore";
+import { db, auth } from "../plugins/firebase";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    user: null,
     leagues: [],
     roster: [],
     teams: [],
@@ -16,6 +24,7 @@ export default new Vuex.Store({
     selectedTeam: null,
     selectedLeagueId: null,
     selectedLeague: null,
+    userProfile: null,
   },
   getters: {},
   mutations: {
@@ -28,7 +37,42 @@ export default new Vuex.Store({
         state.roster = JSON.parse(localStorage.getItem("roster"));
       }
     },
-
+    async GET_USER_PROFILE(state) {
+      const docRef = doc(db, "skaters", state.user.uid);
+      const docSnap = await getDoc(docRef);
+      state.userProfile = docSnap.data();
+    },
+    async SAVE_USER_PROFILE(state, profile) {
+      await setDoc(doc(db, "skaters", state.user.uid), profile)
+        .then(() => console.log("profile saved"))
+        .catch((err) => console.log(err));
+    },
+    FIREBASE_SIGNUP(state, loginCreds) {
+      createUserWithEmailAndPassword(
+        auth,
+        loginCreds.email,
+        loginCreds.password
+      ).then((userCredential) => {
+        state.user = userCredential.user;
+      });
+    },
+    FIREBASE_LOGIN(state, loginCreds) {
+      signInWithEmailAndPassword(
+        auth,
+        loginCreds.email,
+        loginCreds.password
+      ).then((userCredential) => {
+        state.user = userCredential.user;
+      });
+    },
+    FIREBASE_SIGNOUT(state) {
+      signOut(auth)
+        .then(() => {
+          state.user = null;
+          state.userProfile = null;
+        })
+        .catch((err) => console.log(err.message));
+    },
     // using mysport api found on crossovertx site.
     GET_LEAGUES(state, location) {
       state.isLoading = true;
@@ -195,6 +239,21 @@ export default new Vuex.Store({
     },
     getStats({ commit }, leagueid) {
       commit("GET_STATS", leagueid);
+    },
+    getUserProfile({ commit }) {
+      commit("GET_USER_PROFILE");
+    },
+    saveUserProfile({ commit }, payload) {
+      commit("SET_USER_PROFILE", payload);
+    },
+    firebaseSignup({ commit }, loginCreds) {
+      commit("FIREBASE_SIGNUP", loginCreds);
+    },
+    firebaseLogin({ commit }, loginCreds) {
+      commit("FIREBASE_LOGIN", loginCreds);
+    },
+    firebaseLogout({ commit }) {
+      commit("FIREBASE_SIGNOUT");
     },
   },
   modules: {},

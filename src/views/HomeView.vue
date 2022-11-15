@@ -9,12 +9,10 @@
         <v-btn
           color="#254bc8"
           dark
-          v-bind="attrs"
-          v-on="on"
           large
-          to="/locations/crossover"
+          to="/sign-up"
         >
-        View Crossover Leagues
+        Sign Up
       </v-btn>
     </div>
     <div class="d-none d-md-block">

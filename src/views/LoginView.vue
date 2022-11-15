@@ -7,14 +7,13 @@
                     <v-card-text>
                     <v-form>
                         <v-text-field
-                            prepend-icon="mdi-account"
-                            name="username"
-                            label="Username"
+                            v-model="email"
+                            name="email"
+                            label="Email"
                             type="text"
                         ></v-text-field>
                         <v-text-field
-                            id="password"
-                            prepend-icon="mdi-lock"
+                            v-model="password"
                             name="password"
                             label="Password"
                             type="password"
@@ -23,7 +22,7 @@
                     </v-card-text>
                     <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn elevation="0" color="secondary" dark="false" to="/"> <span style="color:#333;"></span> Login</v-btn>
+                    <v-btn elevation="0" color="secondary" @click="login()"> <span style="color:#333;"></span> Login</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -32,7 +31,24 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            email: '',
+            password: '',
+        }
+    },
+    methods: {
+        login() {
+            const loginCreds = {
+                email: this.email,
+                password: this.password
+            }
+            this.$store.dispatch("firebaseLogin", loginCreds)
+            this.$router.push("/")
+        }
+    }
+};
 </script>
 
 <style lang="scss" scoped></style>

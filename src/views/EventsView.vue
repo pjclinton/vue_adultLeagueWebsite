@@ -76,8 +76,12 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch("getChapSkates");
-    this.$store.dispatch("getPondSkates");
+    if (!this.$store.state.chapEvents) {
+      this.$store.dispatch("getChapSkates");
+    }
+    if (!this.$store.state.pondEvents) {
+      this.$store.dispatch("getPondSkates");
+    }
   },
   methods: {
     handleClick(location) {
