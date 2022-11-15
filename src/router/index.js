@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import { auth } from "../plugins/firebase";
-import { createWebHistory } from "vue-router";
 
 Vue.use(VueRouter);
 
@@ -11,12 +10,6 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
-  },
-  {
-    path: "/add-player",
-    name: "add-player",
-
-    component: () => import("../views/AddPlayerView.vue"),
   },
   {
     path: "/events",

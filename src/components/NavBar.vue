@@ -37,14 +37,14 @@
             <v-list-item
               to="/profile"
               exact
-              v-if="$store.state.user"
+              v-if="$store.state.auth.user"
             >
               <v-list-item-content>
                 <v-list-item-title>Profile</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             </div>
-          <div v-if="!$store.state.user" class="login">
+          <div v-if="!$store.state.auth.user" class="login">
             <v-list-item
               to="/login"
               link
@@ -55,7 +55,7 @@
               </v-list-item-content>
             </v-list-item>
           </div>
-          <div class="logout" v-if="$store.state.user">
+          <div class="logout" v-if="$store.state.auth.user">
             <v-list-item
               @click="logout()"
             >
@@ -96,25 +96,25 @@
         >
       </div>
       <v-btn
-        v-if="$store.state.user"
+        v-if="$store.state.auth.user"
         class="ml-1 mr-1"
         text
         to="/profile"
       >Profile</v-btn>
       <v-btn
-        v-if="$store.state.user"
+        v-if="$store.state.auth.user"
         class="ml-1 mr-1"
         text
         to="/admin"
       >Admin</v-btn>
       <v-btn
-        v-if="!$store.state.user"
+        v-if="!$store.state.auth.user"
         class="ml-1 mr-1"
         text
         to="/login"
       >Login</v-btn>
       <v-btn
-        v-if="$store.state.user"
+        v-if="$store.state.auth.user"
         class="ml-1 mr-1"
         text
         @click="logout()"

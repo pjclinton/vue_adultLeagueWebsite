@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-container mt-10" v-if="$store.state.userProfile">
+  <div class="profile-container mt-10" v-if="$store.state.auth.userProfile">
     <v-card color="primary" dark max-width="800px">
       <v-card-title>
         User Profile
@@ -12,7 +12,7 @@
           <v-row>
             <v-col>
               username: <br>
-              {{ $store.state.userProfile.username }}
+              {{ $store.state.auth.userProfile.username }}
             </v-col>
           </v-row>
         </v-container>
@@ -28,7 +28,7 @@
 <script>
   export default {
     created() {
-      if (!this.$store.state.userProfile) {
+      if (!this.$store.state.auth.userProfile) {
         this.$store.dispatch("getUserProfile")
       }
     }
