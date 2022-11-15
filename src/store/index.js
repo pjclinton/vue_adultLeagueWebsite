@@ -1,8 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { doc, getDoc } from "firebase/firestore";
-import { db, auth } from '../plugins/firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { db, auth } from "../plugins/firebase";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 Vue.use(Vuex);
 
@@ -44,18 +48,31 @@ export default new Vuex.Store({
         .catch((err) => console.log(err));
     },
     FIREBASE_SIGNUP(state, loginCreds) {
-      createUserWithEmailAndPassword(auth, loginCreds.email, loginCreds.password)
-      .then((userCredential) => {
+      createUserWithEmailAndPassword(
+        auth,
+        loginCreds.email,
+        loginCreds.password
+      ).then((userCredential) => {
         state.user = userCredential.user;
-      })
+      });
     },
     FIREBASE_LOGIN(state, loginCreds) {
-      signInWithEmailAndPassword(auth, loginCreds.email, loginCreds.password)
-      .then((userCredential) => {
+      signInWithEmailAndPassword(
+        auth,
+        loginCreds.email,
+        loginCreds.password
+      ).then((userCredential) => {
         state.user = userCredential.user;
-      })
+      });
     },
-
+    FIREBASE_SIGNOUT(state) {
+      signOut(auth)
+        .then(() => {
+          state.user = null;
+          state.userProfile = null;
+        })
+        .catch((err) => console.log(err.message));
+    },
     // using mysport api found on crossovertx site.
     GET_LEAGUES(state, location) {
       state.isLoading = true;
@@ -226,15 +243,18 @@ export default new Vuex.Store({
     getUserProfile({ commit }) {
       commit("GET_USER_PROFILE");
     },
-    saveUserProfile({commit}, payload) {
-      commit("SET_USER_PROFILE", payload)
+    saveUserProfile({ commit }, payload) {
+      commit("SET_USER_PROFILE", payload);
     },
-    firebaseSignup({ commit}, loginCreds) {
+    firebaseSignup({ commit }, loginCreds) {
       commit("FIREBASE_SIGNUP", loginCreds);
     },
     firebaseLogin({ commit }, loginCreds) {
-      commit("FIREBASE_LOGIN", loginCreds)
-    }
+      commit("FIREBASE_LOGIN", loginCreds);
+    },
+    firebaseLogout({ commit }) {
+      commit("FIREBASE_SIGNOUT");
+    },
   },
   modules: {},
 });

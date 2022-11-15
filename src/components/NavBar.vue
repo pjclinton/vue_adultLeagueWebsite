@@ -125,8 +125,6 @@
 
 <script>
 import { quotes } from "../assets/hockey-quotes";
-import { signOut } from "firebase/auth";
-import { auth } from '../plugins/firebase'
 
 export default {
   data: () => ({
@@ -150,7 +148,8 @@ export default {
   },
   methods: {
     logout() {
-      signOut(auth).then(() => console.log('logged out'))
+      this.$store.dispatch("firebaseLogout")
+      this.$router.push("/login")
     },
   },
 };

@@ -45,6 +45,7 @@ export default {
                 password: this.password
             }
             this.$store.dispatch("firebaseLogin", loginCreds)
+            this.$router.push("/")
         }
     }
 };
