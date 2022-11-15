@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { signOut } from "firebase/auth";
+import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -63,6 +64,7 @@ export default new Vuex.Store({
         loginCreds.password
       ).then((userCredential) => {
         state.user = userCredential.user;
+        router.push("/");
       });
     },
     FIREBASE_SIGNOUT(state) {
